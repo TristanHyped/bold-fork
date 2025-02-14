@@ -186,53 +186,60 @@ export function BorrowScreen() {
         <Field
           // “You deposit”
           field={
-            <InputField
-              id="input-deposit"
-              contextual={
-                <Dropdown
-                  items={collaterals.map(({ symbol, name }) => ({
-                    icon: <TokenIcon symbol={symbol} />,
-                    label: name,
-                    value: account.isConnected
-                      ? fmtnum(balances[symbol]?.data ?? 0)
-                      : "−",
-                  }))}
-                  menuPlacement="end"
-                  menuWidth={300}
-                  onSelect={(index) => {
-                    const coll = collaterals[index];
-                    if (!coll) {
-                      throw new Error(`Unknown branch: ${index}`);
-                    }
-
-                    deposit.setValue("");
-                    router.push(
-                      `/borrow/${coll.symbol.toLowerCase()}`,
-                      { scroll: false },
-                    );
-                  }}
-                  selected={branch.id}
-                />
-              }
-              label="Collateral"
-              placeholder="0.00"
-              secondary={{
-                start: `$${
-                  deposit.parsed && collPrice.data
-                    ? fmtnum(dn.mul(collPrice.data, deposit.parsed), "2z")
-                    : "0.00"
-                }`,
-                end: maxAmount && dn.gt(maxAmount, 0) && (
-                  <TextButton
-                    label={`Max ${fmtnum(maxAmount)} ${collateral.name}`}
-                    onClick={() => {
-                      deposit.setValue(dn.toString(maxAmount));
-                    }}
-                  />
-                ),
+            <div
+              style={{
+                boxShadow: "0px 12px 24px -12px #16161352",
+                borderRadius: 8,
               }}
-              {...deposit.inputFieldProps}
-            />
+            >
+              <InputField
+                id="input-deposit"
+                contextual={
+                  <Dropdown
+                    items={collaterals.map(({ symbol, name }) => ({
+                      icon: <TokenIcon symbol={symbol} />,
+                      label: name,
+                      value: account.isConnected
+                        ? fmtnum(balances[symbol]?.data ?? 0)
+                        : "−",
+                    }))}
+                    menuPlacement="end"
+                    menuWidth={300}
+                    onSelect={(index) => {
+                      const coll = collaterals[index];
+                      if (!coll) {
+                        throw new Error(`Unknown branch: ${index}`);
+                      }
+
+                      deposit.setValue("");
+                      router.push(
+                        `/borrow/${coll.symbol.toLowerCase()}`,
+                        { scroll: false },
+                      );
+                    }}
+                    selected={branch.id}
+                  />
+                }
+                label="Collateral"
+                placeholder="0.00"
+                secondary={{
+                  start: `$${
+                    deposit.parsed && collPrice.data
+                      ? fmtnum(dn.mul(collPrice.data, deposit.parsed), "2z")
+                      : "0.00"
+                  }`,
+                  end: maxAmount && dn.gt(maxAmount, 0) && (
+                    <TextButton
+                      label={`Max ${fmtnum(maxAmount)} ${collateral.name}`}
+                      onClick={() => {
+                        deposit.setValue(dn.toString(maxAmount));
+                      }}
+                    />
+                  ),
+                }}
+                {...deposit.inputFieldProps}
+              />
+            </div>
           }
           footer={{
             start: collPrice.data && (
@@ -252,53 +259,60 @@ export function BorrowScreen() {
         <Field
           // “You borrow”
           field={
-            <InputField
-              id="input-debt"
-              contextual={
-                <InputField.Badge
-                  icon={<TokenIcon symbol="BOLD" />}
-                  label="BOLD"
-                />
-              }
-              drawer={debt.isFocused || !isBelowMinDebt ? null : {
-                mode: "error",
-                message: `You must borrow at least ${fmtnum(MIN_DEBT, 2)} BOLD.`,
+            <div
+              style={{
+                boxShadow: "0px 12px 24px -12px #16161352",
+                borderRadius: 8,
               }}
-              label="Loan"
-              placeholder="0.00"
-              secondary={{
-                start: `$${
-                  debt.parsed
-                    ? fmtnum(debt.parsed)
-                    : "0.00"
-                }`,
-                end: debtSuggestions && (
-                  <HFlex gap={6}>
-                    {debtSuggestions.map((s) => {
-                      return s && (
-                        s.debt && s.risk && (
-                          <PillButton
-                            key={dn.toString(s.debt)}
-                            label={fmtnum(s.debt, {
-                              compact: true,
-                              digits: 0,
-                              prefix: "$",
-                            })}
-                            onClick={() => {
-                              if (s.debt) {
-                                debt.setValue(dn.toString(s.debt, 0));
-                              }
-                            }}
-                            warnLevel={s.risk}
-                          />
-                        )
-                      );
-                    })}
-                  </HFlex>
-                ),
-              }}
-              {...debt.inputFieldProps}
-            />
+            >
+              <InputField
+                id="input-debt"
+                contextual={
+                  <InputField.Badge
+                    icon={<TokenIcon symbol="BOLD" />}
+                    label="BOLD"
+                  />
+                }
+                drawer={debt.isFocused || !isBelowMinDebt ? null : {
+                  mode: "error",
+                  message: `You must borrow at least ${fmtnum(MIN_DEBT, 2)} BOLD.`,
+                }}
+                label="Loan"
+                placeholder="0.00"
+                secondary={{
+                  start: `$${
+                    debt.parsed
+                      ? fmtnum(debt.parsed)
+                      : "0.00"
+                  }`,
+                  end: debtSuggestions && (
+                    <HFlex gap={6}>
+                      {debtSuggestions.map((s) => {
+                        return s && (
+                          s.debt && s.risk && (
+                            <PillButton
+                              key={dn.toString(s.debt)}
+                              label={fmtnum(s.debt, {
+                                compact: true,
+                                digits: 0,
+                                prefix: "$",
+                              })}
+                              onClick={() => {
+                                if (s.debt) {
+                                  debt.setValue(dn.toString(s.debt, 0));
+                                }
+                              }}
+                              warnLevel={s.risk}
+                            />
+                          )
+                        );
+                      })}
+                    </HFlex>
+                  ),
+                }}
+                {...debt.inputFieldProps}
+              />
+            </div>
           }
           footer={[
             {
@@ -327,17 +341,24 @@ export function BorrowScreen() {
         <Field
           // “Interest rate”
           field={
-            <InterestRateField
-              branchId={branch.id}
-              debt={debt.parsed}
-              delegate={interestRateDelegate}
-              inputId="input-interest-rate"
-              interestRate={interestRate}
-              mode={interestRateMode}
-              onChange={setInterestRate}
-              onDelegateChange={setInterestRateDelegate}
-              onModeChange={setInterestRateMode}
-            />
+            <div
+              style={{
+                boxShadow: "0px 12px 24px -12px #16161352",
+                borderRadius: 8,
+              }}
+            >
+              <InterestRateField
+                branchId={branch.id}
+                debt={debt.parsed}
+                delegate={interestRateDelegate}
+                inputId="input-interest-rate"
+                interestRate={interestRate}
+                mode={interestRateMode}
+                onChange={setInterestRate}
+                onDelegateChange={setInterestRateDelegate}
+                onModeChange={setInterestRateMode}
+              />
+            </div>
           }
           footer={{
             start: (

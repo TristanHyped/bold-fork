@@ -4,6 +4,44 @@ import type { ReactNode } from "react";
 
 import { createContext, useContext, useState } from "react";
 
+const customColorsByChain = {
+  pol: {
+    "bg": "#f5f1eb", // background
+    darkTitle: "#30066e", // persian indigo
+    navLinks: "#4c2882", // spanish violet
+    navLinkActive: "#7314bc", // blue:600
+    brand: {
+      darkBlue: "#290632",
+      green: "#D3B8FF",
+      blue: "#30066e",
+      lightBlue: "#6D8AED",
+      golden: "#E2C9FE",
+      cyan: "#95CBF3",
+      coral: "#FB7C59",
+      brown: "#DBB79B",
+    },
+  },
+  sei: {
+    "bg": "#f5f1eb", // background
+    darkTitle: "red", // persian indigo
+    navLinks: "red", // spanish violet
+    navLinkActive: "red", // blue:600
+    brand: {
+      darkBlue: "#290632",
+      blue: "#30066e",
+      lightBlue: "#6D8AED",
+      green: "#8a2be1",
+      golden: "#F5D93A",
+      cyan: "#95CBF3",
+      coral: "#FB7C59",
+      brown: "#DBB79B",
+    },
+  },
+};
+
+const currentChain = "pol" as "pol" | "sei";
+const customColors = customColorsByChain[currentChain];
+
 // The Liquity V2 base color palette, meant
 // to be used by themes rather than directly.
 export const colors = {
@@ -13,15 +51,15 @@ export const colors = {
   "blue:200": "#C4D0F9",
   "blue:300": "#9CB1F4",
   "blue:400": "#6D8AED",
-  "blue:500": "#405AE5",
+  "blue:500": customColors.navLinkActive,
   "blue:600": "#3544DB",
   "blue:700": "#2D33C8",
   "blue:800": "#2A2BA3",
   "blue:900": "#272A81",
-  "blue:950": "#1C1D4F",
+  "blue:950": customColors.navLinks,
 
   // Gray
-  "gray:50": "#F5F6F8",
+  "gray:50": "#fefefe", // borrow screen input bg + Borrow Card Description
   "gray:100": "#EDEFF2",
   "gray:200": "#DDE0E8",
   "gray:300": "#C8CDD9",
@@ -31,7 +69,7 @@ export const colors = {
   "gray:700": "#73748F",
   "gray:800": "#5F6174",
   "gray:900": "#50525F",
-  "gray:950": "#2F3037",
+  "gray:950": customColors.darkTitle, // borrow bold - open first position
 
   // Yellow
   "yellow:50": "#FDFBE9",
@@ -42,9 +80,9 @@ export const colors = {
   "yellow:500": "#E1B111",
   "yellow:600": "#C2890C",
   "yellow:700": "#9B620D",
-  "yellow:800": "#804E13",
+  "yellow:800": customColors.darkTitle, // homepage stake card text
   "yellow:900": "#6D4016",
-  "yellow:950": "#402108",
+  "yellow:950": customColors.darkTitle, // homepage stake card title
 
   // Green
   "green:50": "#F1FCF2",
@@ -55,9 +93,9 @@ export const colors = {
   "green:500": "#2EB94D",
   "green:600": "#20993C",
   "green:700": "#1D7832",
-  "green:800": "#1C5F2C",
+  "green:800": customColors.darkTitle, // homepage multiply card text
   "green:900": "#194E27",
-  "green:950": "#082B12",
+  "green:950": customColors.darkTitle, // homepage multiply card title
 
   // Red
   "red:50": "#FEF5F2",
@@ -76,22 +114,24 @@ export const colors = {
   "brown:50": "#F8F6F4",
 
   // desert
-  "desert:50": "#FAF9F7",
+  "desert:50": "#FAF9F7", // earn input bg
   "desert:100": "#EFECE5",
   "desert:950": "#2C231E",
+
+  "bg": customColors.bg, // edited
 
   // White
   "white": "#FFFFFF",
 
   // Brand colors
-  "brand:blue": "#405AE5",
-  "brand:lightBlue": "#6D8AED",
-  "brand:darkBlue": "#121B44",
-  "brand:green": "#63D77D",
-  "brand:golden": "#F5D93A",
-  "brand:cyan": "#95CBF3",
-  "brand:coral": "#FB7C59",
-  "brand:brown": "#DBB79B",
+  "brand:blue": customColors.brand.blue,
+  "brand:lightBlue": customColors.brand.lightBlue,
+  "brand:darkBlue": customColors.brand.darkBlue,
+  "brand:green": customColors.brand.green,
+  "brand:golden": customColors.brand.golden,
+  "brand:cyan": customColors.brand.cyan,
+  "brand:coral": customColors.brand.coral,
+  "brand:brown": customColors.brand.brown,
 };
 
 // The light theme, which is the only theme for now. These
@@ -110,7 +150,7 @@ export const lightTheme = {
     accentActive: "blue:600",
     accentContent: "white",
     accentHint: "blue:400",
-    background: "white",
+    background: "bg",
     backgroundActive: "gray:50",
     border: "gray:200",
     borderSoft: "gray:100",

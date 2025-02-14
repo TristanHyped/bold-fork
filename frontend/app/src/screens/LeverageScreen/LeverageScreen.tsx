@@ -183,54 +183,61 @@ export function LeverageScreen() {
       >
         <Field
           field={
-            <InputField
-              id="input-deposit"
-              contextual={
-                <Dropdown
-                  items={collaterals.map(({ symbol, name }) => ({
-                    icon: <TokenIcon symbol={symbol} />,
-                    label: name,
-                    value: account.isConnected
-                      ? fmtnum(balances[symbol]?.data ?? 0)
-                      : "−",
-                  }))}
-                  menuPlacement="end"
-                  menuWidth={300}
-                  onSelect={(index) => {
-                    setTimeout(() => {
-                      depositPreLeverage.setValue("");
-                      depositPreLeverage.focus();
-                    }, 0);
-                    const collToken = collaterals[index];
-                    if (!collToken) {
-                      throw new Error(`Unknown branch: ${index}`);
-                    }
-                    const { symbol } = collToken;
-                    router.push(
-                      `/multiply/${symbol.toLowerCase()}`,
-                      { scroll: false },
-                    );
-                  }}
-                  selected={branch.id}
-                />
-              }
-              label={content.leverageScreen.depositField.label}
-              placeholder="0.00"
-              secondary={{
-                start: fmtnum(depositUsd, { prefix: "$", preset: "2z" }),
-                end: maxAmount
-                  ? (
-                    <TextButton
-                      label={`Max ${fmtnum(maxAmount)} ${collateral.name}`}
-                      onClick={() => {
-                        depositPreLeverage.setValue(dn.toString(maxAmount));
-                      }}
-                    />
-                  )
-                  : "Fetching balance…",
+            <div
+              style={{
+                boxShadow: "0px 12px 24px -12px #16161352",
+                borderRadius: 8,
               }}
-              {...depositPreLeverage.inputFieldProps}
-            />
+            >
+              <InputField
+                id="input-deposit"
+                contextual={
+                  <Dropdown
+                    items={collaterals.map(({ symbol, name }) => ({
+                      icon: <TokenIcon symbol={symbol} />,
+                      label: name,
+                      value: account.isConnected
+                        ? fmtnum(balances[symbol]?.data ?? 0)
+                        : "−",
+                    }))}
+                    menuPlacement="end"
+                    menuWidth={300}
+                    onSelect={(index) => {
+                      setTimeout(() => {
+                        depositPreLeverage.setValue("");
+                        depositPreLeverage.focus();
+                      }, 0);
+                      const collToken = collaterals[index];
+                      if (!collToken) {
+                        throw new Error(`Unknown branch: ${index}`);
+                      }
+                      const { symbol } = collToken;
+                      router.push(
+                        `/multiply/${symbol.toLowerCase()}`,
+                        { scroll: false },
+                      );
+                    }}
+                    selected={branch.id}
+                  />
+                }
+                label={content.leverageScreen.depositField.label}
+                placeholder="0.00"
+                secondary={{
+                  start: fmtnum(depositUsd, { prefix: "$", preset: "2z" }),
+                  end: maxAmount
+                    ? (
+                      <TextButton
+                        label={`Max ${fmtnum(maxAmount)} ${collateral.name}`}
+                        onClick={() => {
+                          depositPreLeverage.setValue(dn.toString(maxAmount));
+                        }}
+                      />
+                    )
+                    : "Fetching balance…",
+                }}
+                {...depositPreLeverage.inputFieldProps}
+              />
+            </div>
           }
           footer={{
             start: collPrice.data && (
@@ -249,12 +256,19 @@ export function LeverageScreen() {
 
         <Field
           field={
-            <LeverageField
-              drawer={leverageFieldDrawer}
-              inputId="input-liquidation-price"
-              onDrawerClose={leverageSlippageElements.onClose}
-              {...leverageField}
-            />
+            <div
+              style={{
+                boxShadow: "0px 12px 24px -12px #16161352",
+                borderRadius: 8,
+              }}
+            >
+              <LeverageField
+                drawer={leverageFieldDrawer}
+                inputId="input-liquidation-price"
+                onDrawerClose={leverageSlippageElements.onClose}
+                {...leverageField}
+              />
+            </div>
           }
           footer={{
             start: (
@@ -297,17 +311,24 @@ export function LeverageScreen() {
 
         <Field
           field={
-            <InterestRateField
-              branchId={branch.id}
-              debt={leverageField.debt}
-              delegate={interestRateDelegate}
-              inputId="input-interest-rate"
-              interestRate={interestRate}
-              mode={interestRateMode}
-              onChange={setInterestRate}
-              onDelegateChange={setInterestRateDelegate}
-              onModeChange={setInterestRateMode}
-            />
+            <div
+              style={{
+                boxShadow: "0px 12px 24px -12px #16161352",
+                borderRadius: 8,
+              }}
+            >
+              <InterestRateField
+                branchId={branch.id}
+                debt={leverageField.debt}
+                delegate={interestRateDelegate}
+                inputId="input-interest-rate"
+                interestRate={interestRate}
+                mode={interestRateMode}
+                onChange={setInterestRate}
+                onDelegateChange={setInterestRateDelegate}
+                onModeChange={setInterestRateMode}
+              />
+            </div>
           }
           footer={{
             start: (
