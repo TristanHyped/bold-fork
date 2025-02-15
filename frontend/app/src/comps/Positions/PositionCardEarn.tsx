@@ -1,6 +1,7 @@
 import type { PositionEarn } from "@/src/types";
 
 import { Amount } from "@/src/comps/Amount/Amount";
+import { STABLE_COIN } from "@/src/constants/assets";
 import { getCollToken, useEarnPool, useEarnPosition } from "@/src/liquity-utils";
 import { css } from "@/styled-system/css";
 import { HFlex, IconEarn, TokenIcon } from "@liquity2/uikit";
@@ -57,7 +58,7 @@ export function PositionCardEarn({
                 fallback="−"
                 format={2}
               />
-              <TokenIcon size="medium" symbol="BOLD" />
+              <TokenIcon size="medium" symbol={STABLE_COIN.symbol} />
             </HFlex>
           ),
           label: token && (
@@ -160,7 +161,7 @@ export function PositionCardEarn({
                       value={earnPosition.data?.rewards.bold}
                       format={2}
                     />
-                    <TokenIcon size="mini" symbol="BOLD" />
+                    <TokenIcon size="mini" symbol={STABLE_COIN.symbol} />
                   </div>
                   <div
                     className={css({

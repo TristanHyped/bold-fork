@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { useAppear } from "@/src/anim-utils";
 import { Amount } from "@/src/comps/Amount/Amount";
 import { TagPreview } from "@/src/comps/TagPreview/TagPreview";
+import { GOVERNANCE_COIN, STABLE_COIN } from "@/src/constants/assets";
 import { fmtnum } from "@/src/formatting";
 import { useAccount } from "@/src/services/Ethereum";
 import { useGovernanceStats, useGovernanceUser } from "@/src/subgraph-hooks";
@@ -207,7 +208,7 @@ export function StakePositionSummary({
                         value={stakePosition?.deposit ?? 0}
                       />
                     </div>
-                    <TokenIcon symbol="LQTY" size={32} />
+                    <TokenIcon symbol={GOVERNANCE_COIN.symbol} size={32} />
                   </a.div>
                 )
               ))}
@@ -285,7 +286,7 @@ export function StakePositionSummary({
                   format="2diff"
                   value={stakePosition?.rewards.lusd ?? 0}
                 />
-                <TokenIcon symbol="LUSD" size="mini" />
+                <TokenIcon symbol={STABLE_COIN.symbol} size="mini" />
               </HFlex>
               <HFlex
                 gap={4}
@@ -429,7 +430,7 @@ export function StakePositionSummary({
                 />
                 <TokenIcon
                   title={null}
-                  symbol="LQTY"
+                  symbol={GOVERNANCE_COIN.symbol}
                   size="mini"
                 />
               </div>

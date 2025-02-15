@@ -3,6 +3,7 @@ import type { Dnum } from "dnum";
 import type { ReactNode } from "react";
 
 import { Amount } from "@/src/comps/Amount/Amount";
+import { STABLE_COIN } from "@/src/constants/assets";
 import { formatLiquidationRisk } from "@/src/formatting";
 import { fmtnum } from "@/src/formatting";
 import { getLiquidationRisk, getLtv, getRedemptionRisk } from "@/src/liquity-math";
@@ -93,7 +94,7 @@ export function PositionCardBorrow({
               <Amount value={debt} fallback="−" />
               <TokenIcon
                 size={24}
-                symbol="BOLD"
+                symbol={STABLE_COIN.symbol}
               />
             </HFlex>
           ),

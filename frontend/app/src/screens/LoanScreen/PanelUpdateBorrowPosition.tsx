@@ -33,6 +33,7 @@ import {
 } from "@liquity2/uikit";
 import { maxUint256 } from "viem";
 
+import { STABLE_COIN } from "@/src/constants/assets";
 import * as dn from "dnum";
 import { useState } from "react";
 
@@ -275,8 +276,8 @@ export function PanelUpdateBorrowPosition({
               contextual={
                 <InputTokenBadge
                   background={false}
-                  icon={<TokenIcon symbol="BOLD" />}
-                  label="BOLD"
+                  icon={<TokenIcon symbol={STABLE_COIN.symbol} />}
+                  label={STABLE_COIN.name}
                 />
               }
               drawer={!debtChange.isFocused && isBelowMinDebt

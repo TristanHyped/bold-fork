@@ -1,6 +1,7 @@
 import { Amount } from "@/src/comps/Amount/Amount";
 import { Field } from "@/src/comps/Field/Field";
 import { InputTokenBadge } from "@/src/comps/InputTokenBadge/InputTokenBadge";
+import { GOVERNANCE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { dnumMax } from "@/src/dnum-utils";
 import { parseInputFloat } from "@/src/form-utils";
@@ -49,7 +50,7 @@ export function PanelStaking() {
     )
     : dn.from(0, 18);
 
-  const lqtyBalance = useBalance(account.address, "LQTY");
+  const lqtyBalance = useBalance(account.address, GOVERNANCE_COIN.symbol);
   const isDepositFilled = parsedValue && dn.gt(parsedValue, 0);
   const hasDeposit = stakePosition.data?.deposit && dn.gt(
     stakePosition.data?.deposit,
@@ -93,7 +94,7 @@ export function PanelStaking() {
             contextual={
               <InputTokenBadge
                 background={false}
-                icon={<TokenIcon symbol="LQTY" />}
+                icon={<TokenIcon symbol={GOVERNANCE_COIN.symbol} />}
                 label="LQTY"
               />
             }

@@ -6,6 +6,7 @@ import { INFINITY } from "@/src/characters";
 import { Spinner } from "@/src/comps/Spinner/Spinner";
 import { TagPreview } from "@/src/comps/TagPreview/TagPreview";
 import { Value } from "@/src/comps/Value/Value";
+import { STABLE_COIN } from "@/src/constants/assets";
 import { formatRisk } from "@/src/formatting";
 import { fmtnum } from "@/src/formatting";
 import { getLoanDetails } from "@/src/liquity-math";
@@ -440,7 +441,7 @@ function TotalDebt({
           >
             {fmtnum(loan.borrowed)}
           </div>
-          <TokenIcon symbol="BOLD" size={32} />
+          <TokenIcon symbol={STABLE_COIN.symbol} size={32} />
           {prevLoan && !dn.eq(prevLoan.borrowed, loan.borrowed) && (
             <div
               title={`${fmtnum(prevLoan.borrowed, "full")} BOLD`}

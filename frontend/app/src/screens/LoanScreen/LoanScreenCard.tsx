@@ -8,6 +8,7 @@ import { INFINITY } from "@/src/characters";
 import { ScreenCard } from "@/src/comps/Screen/ScreenCard";
 import { LoanStatusTag } from "@/src/comps/Tag/LoanStatusTag";
 import { Value } from "@/src/comps/Value/Value";
+import { STABLE_COIN } from "@/src/constants/assets";
 import { CHAIN_BLOCK_EXPLORER } from "@/src/env";
 import { formatRisk } from "@/src/formatting";
 import { fmtnum } from "@/src/formatting";
@@ -638,7 +639,7 @@ function LoanCard({
                           })}
                         >
                           {fmtnum(loan.borrowed)}
-                          <TokenIcon symbol="BOLD" size={24} />
+                          <TokenIcon symbol={STABLE_COIN.symbol} size={24} />
                         </div>
                       )}
                   </div>

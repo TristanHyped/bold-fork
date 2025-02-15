@@ -4,6 +4,7 @@ import type { CollateralSymbol } from "@/src/types";
 
 import { Amount } from "@/src/comps/Amount/Amount";
 import { Positions } from "@/src/comps/Positions/Positions";
+import { STABLE_COIN } from "@/src/constants/assets";
 import { DNUM_1 } from "@/src/dnum-utils";
 import {
   getBranch,
@@ -23,6 +24,7 @@ import { HomeTable } from "./HomeTable";
 export function HomeScreen() {
   const account = useAccount();
   const branches = getBranches();
+  console.log("branches", branches);
   return (
     <div
       className={css({
@@ -42,7 +44,7 @@ export function HomeScreen() {
         })}
       >
         <HomeTable
-          title="Borrow BOLD against ETH and staked ETH"
+          title={`Borrow ${STABLE_COIN.symbol} against ETH and staked ETH`}
           subtitle="You can adjust your loans, including your interest rate, at any time"
           icon={<IconBorrow />}
           columns={[
@@ -64,8 +66,8 @@ export function HomeScreen() {
           ))}
         />
         <HomeTable
-          title="Earn rewards with BOLD"
-          subtitle="Earn BOLD & (staked) ETH rewards by putting your BOLD in a stability pool"
+          title={`Earn rewards with ${STABLE_COIN.symbol}`}
+          subtitle={`Earn ${STABLE_COIN.symbol} & (staked) ETH rewards by putting your ${STABLE_COIN.symbol} in a stability pool`}
           icon={<IconEarn />}
           columns={[
             "Pool",
@@ -160,7 +162,7 @@ function BorrowingRow({
                   })}
                 >
                   Borrow
-                  <TokenIcon symbol="BOLD" size="mini" />
+                  <TokenIcon symbol={STABLE_COIN.symbol} size="mini" />
                 </div>
               }
               title={`Borrow ${collateral?.name} from ${symbol}`}
@@ -259,7 +261,7 @@ function EarnRewardsRow({
               >
                 Earn
                 <TokenIcon.Group size="mini">
-                  <TokenIcon symbol="BOLD" />
+                  <TokenIcon symbol={STABLE_COIN.symbol} />
                   <TokenIcon symbol={symbol} />
                 </TokenIcon.Group>
               </div>

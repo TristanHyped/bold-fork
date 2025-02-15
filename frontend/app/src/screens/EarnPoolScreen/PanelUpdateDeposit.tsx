@@ -5,6 +5,7 @@ import { Amount } from "@/src/comps/Amount/Amount";
 import { ConnectWarningBox } from "@/src/comps/ConnectWarningBox/ConnectWarningBox";
 import { Field } from "@/src/comps/Field/Field";
 import { InputTokenBadge } from "@/src/comps/InputTokenBadge/InputTokenBadge";
+import { STABLE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { DNUM_0, dnumMax } from "@/src/dnum-utils";
 import { parseInputFloat } from "@/src/form-utils";
@@ -51,7 +52,7 @@ export function PanelUpdateDeposit({
     DNUM_0,
   );
 
-  const boldBalance = useBalance(account.address, "BOLD");
+  const boldBalance = useBalance(account.address, STABLE_COIN.symbol);
 
   const updatedBoldQty = dn.add(deposited, depositDifference);
 
@@ -92,21 +93,21 @@ export function PanelUpdateDeposit({
             drawer={insufficientBalance
               ? {
                 mode: "error",
-                message: `Insufficient balance. You have ${fmtnum(boldBalance.data ?? 0)} BOLD.`,
+                message: `Insufficient balance. You have ${fmtnum(boldBalance.data ?? 0)} ${STABLE_COIN.symbol}.`,
               }
               : withdrawAboveDeposit
               ? {
                 mode: "error",
                 message: hasDeposit
                   ? `You can’t withdraw more than you have deposited.`
-                  : `No BOLD deposited.`,
+                  : `No ${STABLE_COIN.symbol} deposited.`,
               }
               : null}
             contextual={
               <InputTokenBadge
                 background={false}
-                icon={<TokenIcon symbol="BOLD" />}
-                label="BOLD"
+                icon={<TokenIcon symbol={STABLE_COIN.symbol} />}
+                label={STABLE_COIN.symbol}
               />
             }
             id="input-deposit-change"
@@ -230,7 +231,7 @@ export function PanelUpdateDeposit({
                       color: "contentAlt",
                     })}
                   >
-                    BOLD
+                    {STABLE_COIN.symbol}
                   </span>
                 </div>
                 {collateral && (

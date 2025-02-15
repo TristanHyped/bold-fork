@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { Amount } from "@/src/comps/Amount/Amount";
 import { TagPreview } from "@/src/comps/TagPreview/TagPreview";
+import { STABLE_COIN } from "@/src/constants/assets";
 import { fmtnum } from "@/src/formatting";
 import { getCollToken, isEarnPositionActive, useEarnPool } from "@/src/liquity-utils";
 import { css } from "@/styled-system/css";
@@ -262,7 +263,7 @@ export function EarnPositionSummary({
                 })}
               >
                 {active && fmtnum(earnPosition?.deposit)}
-                <TokenIcon symbol="BOLD" size="mini" title={null} />
+                <TokenIcon symbol={STABLE_COIN.symbol} size="mini" title={null} />
               </div>
               {prevEarnPosition && (
                 <div
@@ -278,7 +279,7 @@ export function EarnPositionSummary({
                   })}
                 >
                   {fmtnum(prevEarnPosition.deposit)}
-                  <TokenIcon symbol="BOLD" size="mini" title={null} />
+                  <TokenIcon symbol={STABLE_COIN.symbol} size="mini" title={null} />
                 </div>
               )}
             </div>
@@ -312,13 +313,13 @@ export function EarnPositionSummary({
                     <>
                       <HFlex
                         gap={4}
-                        title={`${fmtnum(earnPosition?.rewards.bold, "full")} BOLD`}
+                        title={`${fmtnum(earnPosition?.rewards.bold, "full")} ${STABLE_COIN.symbol}`}
                         className={css({
                           fontVariantNumeric: "tabular-nums",
                         })}
                       >
                         {fmtnum(earnPosition?.rewards.bold)}
-                        <TokenIcon symbol="BOLD" size="mini" title={null} />
+                        <TokenIcon symbol={STABLE_COIN.symbol} size="mini" title={null} />
                       </HFlex>
                       <HFlex gap={4}>
                         <Amount value={earnPosition?.rewards.coll} />
@@ -328,7 +329,7 @@ export function EarnPositionSummary({
                   )
                   : (
                     <TokenIcon.Group size="mini">
-                      <TokenIcon symbol="BOLD" />
+                      <TokenIcon symbol={STABLE_COIN.symbol} />
                       <TokenIcon symbol={collToken.symbol} />
                     </TokenIcon.Group>
                   )}

@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 
 import { Amount } from "@/src/comps/Amount/Amount";
 import { ConnectWarningBox } from "@/src/comps/ConnectWarningBox/ConnectWarningBox";
+import { STABLE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { DNUM_0 } from "@/src/dnum-utils";
 import { getCollToken } from "@/src/liquity-utils";
@@ -13,7 +14,6 @@ import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { css } from "@/styled-system/css";
 import { Button, HFlex, TokenIcon, VFlex } from "@liquity2/uikit";
 import * as dn from "dnum";
-
 export function PanelClaimRewards({
   branchId,
   position,
@@ -29,7 +29,7 @@ export function PanelClaimRewards({
     throw new Error(`Invalid branch: ${branchId}`);
   }
 
-  const boldPriceUsd = usePrice("BOLD");
+  const boldPriceUsd = usePrice("BOLD"); // todo: replace with STABLE_COIN.symbol
   const collPriceUsd = usePrice(collateral.symbol);
 
   const totalRewards = collPriceUsd.data && boldPriceUsd.data && dn.add(
@@ -47,7 +47,7 @@ export function PanelClaimRewards({
         <Rewards
           amount={position?.rewards?.bold ?? DNUM_0}
           label={content.earnScreen.rewardsPanel.boldRewardsLabel}
-          symbol="BOLD"
+          symbol={STABLE_COIN.symbol}
         />
         <Rewards
           amount={position?.rewards?.coll ?? DNUM_0}

@@ -15,6 +15,7 @@ import {
   MAX_COLLATERAL_DEPOSITS,
   MIN_DEBT,
 } from "@/src/constants";
+import { STABLE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { dnum18, dnumMax } from "@/src/dnum-utils";
 import { useInputFieldValue } from "@/src/form-utils";
@@ -49,15 +50,18 @@ const KNOWN_COLLATERAL_SYMBOLS = KNOWN_COLLATERALS.map(({ symbol }) => symbol);
 
 export function BorrowScreen() {
   const branches = getBranches();
-  // useParams() can return an array but not with the current
-  // routing setup, so we can safely cast it to a string
+  console.log("branches", branches);
+  // // useParams() can return an array but not with the current
+  // // routing setup, so we can safely cast it to a string
   const collSymbol = `${useParams().collateral ?? branches[0]?.symbol}`.toUpperCase();
+  console.log("collSymbol", collSymbol);
   if (!isCollateralSymbol(collSymbol)) {
     throw new Error(`Invalid collateral symbol: ${collSymbol}`);
   }
 
   const router = useRouter();
   const account = useAccount();
+
   const txFlow = useTransactionFlow();
 
   const branch = getBranch(collSymbol);
@@ -169,7 +173,7 @@ export function BorrowScreen() {
                   />
                 ))}
               </TokenIcon.Group>,
-              <TokenIcon symbol="BOLD" />,
+              <TokenIcon symbol={STABLE_COIN.symbol} />,
             )}
           </HFlex>
         ),
@@ -269,13 +273,13 @@ export function BorrowScreen() {
                 id="input-debt"
                 contextual={
                   <InputField.Badge
-                    icon={<TokenIcon symbol="BOLD" />}
-                    label="BOLD"
+                    icon={<TokenIcon symbol={STABLE_COIN.symbol} />}
+                    label={STABLE_COIN.symbol}
                   />
                 }
                 drawer={debt.isFocused || !isBelowMinDebt ? null : {
                   mode: "error",
-                  message: `You must borrow at least ${fmtnum(MIN_DEBT, 2)} BOLD.`,
+                  message: `You must borrow at least ${fmtnum(MIN_DEBT, 2)} ${STABLE_COIN.symbol}.`,
                 }}
                 label="Loan"
                 placeholder="0.00"

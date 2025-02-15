@@ -116,6 +116,8 @@ export function getBranch(
       : b.id === idOrSymbol
   ));
 
+  console.log("branch", branch);
+
   if (!branch) {
     throw new Error("Invalid branch ID or symbol: " + idOrSymbol);
   }

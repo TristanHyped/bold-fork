@@ -4,6 +4,7 @@ import type { BranchId } from "@/src/types";
 
 import { EarnPositionSummary } from "@/src/comps/EarnPositionSummary/EarnPositionSummary";
 import { Screen } from "@/src/comps/Screen/Screen";
+import { STABLE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { getBranches, useEarnPosition } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
@@ -41,14 +42,14 @@ export function EarnPoolsListScreen() {
           >
             {content.earnHome.headline(
               <TokenIcon.Group>
-                {["BOLD" as const, ...collSymbols].map((symbol) => (
+                {[STABLE_COIN.symbol, ...collSymbols].map((symbol) => (
                   <TokenIcon
                     key={symbol}
                     symbol={symbol}
                   />
                 ))}
               </TokenIcon.Group>,
-              <TokenIcon symbol="BOLD" />,
+              <TokenIcon symbol={STABLE_COIN.symbol} />,
             )}
           </div>
         ),

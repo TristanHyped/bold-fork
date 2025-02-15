@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { ERC20Faucet } from "@/src/abi/ERC20Faucet";
 import { Positions } from "@/src/comps/Positions/Positions";
 import { Screen } from "@/src/comps/Screen/Screen";
+import { GOVERNANCE_COIN, STABLE_COIN } from "@/src/constants/assets";
 import { getBranchContract, getProtocolContract } from "@/src/contracts";
 import { CHAIN_ID } from "@/src/env";
 import { fmtnum } from "@/src/formatting";
@@ -106,25 +107,25 @@ export function AccountScreen({
               gridTemplateColumns: `repeat(3, 1fr)`,
             }}
           >
-            <GridItem label="BOLD balance">
+            <GridItem label={`${STABLE_COIN.symbol} balance`}>
               <Balance
                 address={address}
-                tokenSymbol="BOLD"
+                tokenSymbol={STABLE_COIN.symbol}
               />
             </GridItem>
-            <GridItem label="LQTY balance">
+            <GridItem label={`${GOVERNANCE_COIN.symbol} balance`}>
               <Balance
                 address={address}
-                tokenSymbol="LQTY"
+                tokenSymbol={GOVERNANCE_COIN.symbol}
                 tapButton={tapEnabled
                   && account.address
                   && addressesEqual(address, account.address)}
               />
             </GridItem>
-            <GridItem label="LUSD balance">
+            <GridItem label={`${STABLE_COIN.symbol} balance`}>
               <Balance
                 address={address}
-                tokenSymbol="LUSD"
+                tokenSymbol={STABLE_COIN.symbol}
               />
             </GridItem>
             {branches.map(({ symbol }) => (
@@ -198,7 +199,7 @@ function Balance({
           size="mini"
           label="tap"
           onClick={() => {
-            if ((tokenSymbol === "WSTETH" || tokenSymbol === "RETH") && CollToken) {
+            if (isCollateralSymbol(tokenSymbol) && CollToken) {
               writeContract({
                 abi: ERC20Faucet,
                 address: CollToken.address,
@@ -212,7 +213,7 @@ function Balance({
               return;
             }
 
-            if (tokenSymbol === "LQTY") {
+            if (tokenSymbol === GOVERNANCE_COIN.symbol) {
               writeContract({
                 abi: LqtyToken.abi,
                 address: LqtyToken.address,

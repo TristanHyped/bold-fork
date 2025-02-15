@@ -1,7 +1,6 @@
 "use client";
 
 import type { ComponentProps, ReactElement } from "react";
-import type { Token } from "../types";
 
 import { Children, createContext, useContext } from "react";
 import { match } from "ts-pattern";
@@ -14,7 +13,7 @@ export function TokenIcon({
   title,
 }: {
   size?: "medium" | "large" | "small" | "mini" | number;
-  symbol: Token["symbol"];
+  symbol: keyof typeof TOKENS_BY_SYMBOL;
   title?: string | null;
 }) {
   const sizeFromGroup = useContext(TokenIconGroupSize);
@@ -27,6 +26,13 @@ export function TokenIcon({
     .otherwise(() => size);
 
   const token = TOKENS_BY_SYMBOL[symbol];
+
+  console.log("symbol", symbol);
+  console.log("token", token);
+
+  if (!token) {
+    return <></>;
+  }
 
   return (
     <div

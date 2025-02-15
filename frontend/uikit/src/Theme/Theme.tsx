@@ -6,7 +6,7 @@ import { createContext, useContext, useState } from "react";
 
 const customColorsByChain = {
   pol: {
-    "bg": "#f5f1eb", // background
+    "bg": "#F2EAF5", // background
     darkTitle: "#30066e", // persian indigo
     navLinks: "#4c2882", // spanish violet
     navLinkActive: "#7314bc", // blue:600

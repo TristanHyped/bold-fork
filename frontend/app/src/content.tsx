@@ -35,21 +35,21 @@ export default {
     loanRedemptionRisk: [
       "Redemption risk",
       <>
-        Users paying the lowest interest rate can get redeemed, if the price of BOLD falls below $1. By raising your
-        interest rate, you reduce this risk.
+        Users paying the lowest interest rate can get redeemed, if the price of {STABLE_COIN.symbol}{" "}
+        falls below $1. By raising your interest rate, you reduce this risk.
       </>,
     ],
     loanLtv: [
       "Loan-to-value ratio",
       <>
-        The ratio between the amount of BOLD borrowed and the deposited collateral (in USD).
+        The ratio between the amount of {STABLE_COIN.symbol} borrowed and the deposited collateral (in USD).
       </>,
     ],
     loanMaxLtv: [
       "Maximum Loan-To-Value (LTV) Ratio",
       <>
         The maximum ratio between the USD value of a loan (in{" "}
-        {STABLE_COIN.label}) and the collateral backing it. The LTV will fluctuate as the price of the collateral
+        {STABLE_COIN.symbol}) and the collateral backing it. The LTV will fluctuate as the price of the collateral
         changes. To decrease the LTV add more colateral or reduce debt.
       </>,
     ],
@@ -67,7 +67,7 @@ export default {
     interestRateBoldPerYear: [
       "Interest rate",
       <>
-        The annualized interest amount in {STABLE_COIN.label}{" "}
+        The annualized interest amount in {STABLE_COIN.symbol}{" "}
         for the selected interest rate. The accumulated interest is added to the loan.
       </>,
     ],
@@ -82,7 +82,7 @@ export default {
       heading: "Your collateral and debt are reduced by the same value.",
       body: (
         <>
-          When {STABLE_COIN.label} trades for under $1, anyone can redeem positions to get {STABLE_COIN.label}{" "}
+          When {STABLE_COIN.symbol} trades for under $1, anyone can redeem positions to get {STABLE_COIN.symbol}{" "}
           back at $1. Positions with the lowest interest rate get redeemed first.
         </>
       ),
@@ -99,14 +99,14 @@ export default {
     subtitle: (
       <>
         Redemptions help maintain{" "}
-        {STABLE_COIN.label}’s peg in a decentralized way. If a user is redeemed, their collateral and debt are reduced
+        {STABLE_COIN.symbol}’s peg in a decentralized way. If a user is redeemed, their collateral and debt are reduced
         equally, resulting in no net loss.
       </>
     ),
     infoItems: [
       {
         icon: "bold",
-        text: `Redemptions occur when ${STABLE_COIN.label} drops below $1.`,
+        text: `Redemptions occur when ${STABLE_COIN.symbol} drops below $1.`,
       },
       {
         icon: "redemption",
@@ -195,15 +195,15 @@ export default {
     actions: {
       borrow: {
         title: "Borrow",
-        description: `Mint ${STABLE_COIN.label} against your collateral at whatever interest rate you want`,
+        description: `Mint ${STABLE_COIN.symbol} against your collateral at whatever interest rate you want`,
       },
       multiply: {
         title: "Multiply",
         description: "Increase your exposure to ETH and its staking yield with a single click",
       },
       earn: {
-        title: `Earn with ${STABLE_COIN.label}`,
-        description: `Deposit ${STABLE_COIN.label} to earn protocol revenues and liquidation proceeds`,
+        title: `Earn with ${STABLE_COIN.symbol}`,
+        description: `Deposit ${STABLE_COIN.symbol} to earn protocol revenues and liquidation proceeds`,
       },
       stake: {
         title: "Stake LQTY",
@@ -223,7 +223,7 @@ export default {
       ],
       spTvl: [
         "Total Value Locked",
-        `The total amount of ${STABLE_COIN.label} deposited in each stability pool.`,
+        `The total amount of ${STABLE_COIN.symbol} deposited in each stability pool.`,
       ],
       borrowTvl: [
         "Total Value Locked",
@@ -236,7 +236,7 @@ export default {
   borrowScreen: {
     headline: (tokensIcons: N, boldIcon: N) => (
       <>
-        Borrow {boldIcon} {STABLE_COIN.label} with {tokensIcons} ETH
+        Borrow {boldIcon} {STABLE_COIN.symbol} with {tokensIcons} ETH
       </>
     ),
     depositField: {
@@ -254,7 +254,7 @@ export default {
     action: "Next: Summary",
     infoTooltips: {
       interestRateSuggestions: [
-        `Positions with lower interest rates are the first to be redeemed by ${STABLE_COIN.label} holders.`,
+        `Positions with lower interest rates are the first to be redeemed by ${STABLE_COIN.symbol} holders.`,
       ],
     },
   },
@@ -286,7 +286,7 @@ export default {
       ],
       interestRateSuggestions: [
         <>
-          Positions with lower interest rates are the first to be redeemed by {STABLE_COIN.label} holders.
+          Positions with lower interest rates are the first to be redeemed by {STABLE_COIN.symbol} holders.
         </>,
       ],
       exposure: [
@@ -302,14 +302,14 @@ export default {
   earnHome: {
     headline: (tokensIcons: N, boldIcon: N) => (
       <>
-        Deposit {boldIcon} {STABLE_COIN.label} to earn rewards {tokensIcons}
+        Deposit {boldIcon} {STABLE_COIN.symbol} to earn rewards {tokensIcons}
       </>
     ),
     subheading: (
       <>
-        A {STABLE_COIN.label}{" "}
+        A {STABLE_COIN.symbol}{" "}
         deposit in a stability pool earns rewards from the fees that users pay on their loans. Also, in case the system
-        needs to liquidate positions, the {STABLE_COIN.label} may be swapped to collateral.
+        needs to liquidate positions, the {STABLE_COIN.symbol} may be swapped to collateral.
       </>
     ),
     poolsColumns: {
@@ -319,7 +319,7 @@ export default {
     },
     infoTooltips: {
       tvl: (collateral: N) => [
-        <>Total {STABLE_COIN.label} covering {collateral}-backed position liquidations</>,
+        <>Total {STABLE_COIN.symbol} covering {collateral}-backed position liquidations</>,
       ],
     },
   },
@@ -367,10 +367,10 @@ export default {
     },
     infoTooltips: {
       tvl: (collateral: N) => [
-        <>Total {STABLE_COIN.label} covering {collateral}-backed position liquidations.</>,
+        <>Total {STABLE_COIN.symbol} covering {collateral}-backed position liquidations.</>,
       ],
       depositPoolShare: [
-        `Percentage of your ${STABLE_COIN.label} deposit compared to the total deposited in this stability pool.`,
+        `Percentage of your ${STABLE_COIN.symbol} deposit compared to the total deposited in this stability pool.`,
       ],
       alsoClaimRewardsDeposit: [
         <>
@@ -384,14 +384,14 @@ export default {
         </>,
       ],
       currentApr: [
-        `Average annualized return for ${STABLE_COIN.label} deposits over the past 7 days.`,
+        `Average annualized return for ${STABLE_COIN.symbol} deposits over the past 7 days.`,
       ],
       rewardsEth: [
         "ETH rewards",
         "Your proceeds from liquidations conducted by this stability pool.",
       ],
       rewardsBold: [
-        `${STABLE_COIN.label} rewards`,
+        `${STABLE_COIN.symbol} rewards`,
         "Your earnings from protocol revenue distributions to this stability pool.",
       ],
     },
@@ -447,7 +447,7 @@ export default {
       intro: (
         <>
           Direct incentives from Liquity V2 protocol revenues towards liquidity providers for{" "}
-          {STABLE_COIN.label}. Upvote from Thursday to Tuesday. Downvote all week.{" "}
+          {STABLE_COIN.symbol}. Upvote from Thursday to Tuesday. Downvote all week.{" "}
           <Link href="https://docs.liquity.org/v2-faq/lqty-staking">Learn more</Link>
         </>
       ),

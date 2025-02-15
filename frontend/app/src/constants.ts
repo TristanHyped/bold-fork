@@ -37,8 +37,11 @@ export const MIN_DEBT = dn.from(2000, 18);
 
 export const MAX_COLLATERAL_DEPOSITS: Record<CollateralSymbol, dn.Dnum> = {
   ETH: dn.from(100_000_000n, 18),
-  WSTETH: dn.from(100_000_000n, 18),
-  RETH: dn.from(100_000_000n, 18),
+  // WSTETH: dn.from(100_000_000n, 18),
+  // RETH: dn.from(100_000_000n, 18),
+  POL: dn.from(100_000_000n, 18),
+  WBTC: dn.from(100_000_000n, 18),
+  MATICX: dn.from(100_000_000n, 18),
 };
 
 // LTV factor suggestions, as ratios of the multiply factor range

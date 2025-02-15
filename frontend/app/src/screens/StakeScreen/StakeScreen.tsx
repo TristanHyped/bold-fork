@@ -2,6 +2,7 @@
 
 import { Screen } from "@/src/comps/Screen/Screen";
 import { StakePositionSummary } from "@/src/comps/StakePositionSummary/StakePositionSummary";
+import { GOVERNANCE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { useStakePosition } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
@@ -10,7 +11,6 @@ import { useParams, useRouter } from "next/navigation";
 import { PanelRewards } from "./PanelRewards";
 import { PanelStaking } from "./PanelStaking";
 import { PanelVoting } from "./PanelVoting";
-
 const TABS = [
   { label: content.stakeScreen.tabs.deposit, id: "deposit" },
   { label: content.stakeScreen.tabs.rewards, id: "rewards" },
@@ -28,7 +28,7 @@ export function StakeScreen() {
       heading={{
         title: (
           <HFlex>
-            {content.stakeScreen.headline(<TokenIcon size={24} symbol="LQTY" />)}
+            {content.stakeScreen.headline(<TokenIcon size={24} symbol={GOVERNANCE_COIN.symbol} />)}
           </HFlex>
         ),
         subtitle: (
