@@ -2,10 +2,10 @@
 
 import { Screen } from "@/src/comps/Screen/Screen";
 import { StakePositionSummary } from "@/src/comps/StakePositionSummary/StakePositionSummary";
-import { GOVERNANCE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { useStakePosition } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
+import { GOVERNANCE_COIN } from "@liquity2/uikit";
 import { AnchorTextButton, HFlex, Tabs, TokenIcon, VFlex } from "@liquity2/uikit";
 import { useParams, useRouter } from "next/navigation";
 import { PanelRewards } from "./PanelRewards";

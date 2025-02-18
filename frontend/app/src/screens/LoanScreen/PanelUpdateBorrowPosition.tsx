@@ -33,7 +33,7 @@ import {
 } from "@liquity2/uikit";
 import { maxUint256 } from "viem";
 
-import { STABLE_COIN } from "@/src/constants/assets";
+import { STABLE_COIN } from "@liquity2/uikit";
 import * as dn from "dnum";
 import { useState } from "react";
 

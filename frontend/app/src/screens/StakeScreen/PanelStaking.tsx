@@ -1,7 +1,6 @@
 import { Amount } from "@/src/comps/Amount/Amount";
 import { Field } from "@/src/comps/Field/Field";
 import { InputTokenBadge } from "@/src/comps/InputTokenBadge/InputTokenBadge";
-import { GOVERNANCE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { dnumMax } from "@/src/dnum-utils";
 import { parseInputFloat } from "@/src/form-utils";
@@ -12,6 +11,7 @@ import { usePrice } from "@/src/services/Prices";
 import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { infoTooltipProps } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
+import { GOVERNANCE_COIN } from "@liquity2/uikit";
 import { Button, HFlex, InfoTooltip, InputField, Tabs, TextButton, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import { useState } from "react";

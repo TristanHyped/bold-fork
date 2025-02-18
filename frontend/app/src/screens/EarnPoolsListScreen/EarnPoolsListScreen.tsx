@@ -4,11 +4,11 @@ import type { BranchId } from "@/src/types";
 
 import { EarnPositionSummary } from "@/src/comps/EarnPositionSummary/EarnPositionSummary";
 import { Screen } from "@/src/comps/Screen/Screen";
-import { STABLE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { getBranches, useEarnPosition } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
 import { css } from "@/styled-system/css";
+import { STABLE_COIN } from "@liquity2/uikit";
 import { TokenIcon } from "@liquity2/uikit";
 import { a, useTransition } from "@react-spring/web";
 

@@ -1,8 +1,8 @@
 import type { PositionStake } from "@/src/types";
 
 import { Amount } from "@/src/comps/Amount/Amount";
-import { GOVERNANCE_COIN, STABLE_COIN } from "@/src/constants/assets";
 import { css } from "@/styled-system/css";
+import { GOVERNANCE_COIN, STABLE_COIN } from "@liquity2/uikit";
 import { HFlex, IconStake, TokenIcon } from "@liquity2/uikit";
 import Link from "next/link";
 import { PositionCard } from "./PositionCard";

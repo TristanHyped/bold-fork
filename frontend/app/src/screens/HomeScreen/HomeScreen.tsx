@@ -4,7 +4,6 @@ import type { CollateralSymbol } from "@/src/types";
 
 import { Amount } from "@/src/comps/Amount/Amount";
 import { Positions } from "@/src/comps/Positions/Positions";
-import { STABLE_COIN } from "@/src/constants/assets";
 import { DNUM_1 } from "@/src/dnum-utils";
 import {
   getBranch,
@@ -16,6 +15,7 @@ import {
 } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
 import { css } from "@/styled-system/css";
+import { STABLE_COIN } from "@liquity2/uikit";
 import { AnchorTextButton, IconBorrow, IconEarn, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import Link from "next/link";

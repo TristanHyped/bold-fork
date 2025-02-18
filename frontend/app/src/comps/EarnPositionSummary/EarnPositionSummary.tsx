@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 
 import { Amount } from "@/src/comps/Amount/Amount";
 import { TagPreview } from "@/src/comps/TagPreview/TagPreview";
-import { STABLE_COIN } from "@/src/constants/assets";
 import { fmtnum } from "@/src/formatting";
 import { getCollToken, isEarnPositionActive, useEarnPool } from "@/src/liquity-utils";
 import { css } from "@/styled-system/css";
+import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { HFlex, IconArrowRight, IconPlus, InfoTooltip, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import Link from "next/link";
@@ -134,7 +134,7 @@ export function EarnPositionSummary({
                 />
               </div>
               <InfoTooltip heading="Total Value Locked (TVL)">
-                Total amount of BOLD deposited in this stability pool.
+                Total amount of {STABLE_COIN_SYMBOL} deposited in this stability pool.
               </InfoTooltip>
             </div>
           </div>
@@ -263,7 +263,7 @@ export function EarnPositionSummary({
                 })}
               >
                 {active && fmtnum(earnPosition?.deposit)}
-                <TokenIcon symbol={STABLE_COIN.symbol} size="mini" title={null} />
+                <TokenIcon symbol={STABLE_COIN_SYMBOL} size="mini" title={null} />
               </div>
               {prevEarnPosition && (
                 <div
@@ -279,7 +279,7 @@ export function EarnPositionSummary({
                   })}
                 >
                   {fmtnum(prevEarnPosition.deposit)}
-                  <TokenIcon symbol={STABLE_COIN.symbol} size="mini" title={null} />
+                  <TokenIcon symbol={STABLE_COIN_SYMBOL} size="mini" title={null} />
                 </div>
               )}
             </div>
@@ -313,13 +313,13 @@ export function EarnPositionSummary({
                     <>
                       <HFlex
                         gap={4}
-                        title={`${fmtnum(earnPosition?.rewards.bold, "full")} ${STABLE_COIN.symbol}`}
+                        title={`${fmtnum(earnPosition?.rewards.bold, "full")} ${STABLE_COIN_SYMBOL}`}
                         className={css({
                           fontVariantNumeric: "tabular-nums",
                         })}
                       >
                         {fmtnum(earnPosition?.rewards.bold)}
-                        <TokenIcon symbol={STABLE_COIN.symbol} size="mini" title={null} />
+                        <TokenIcon symbol={STABLE_COIN_SYMBOL} size="mini" title={null} />
                       </HFlex>
                       <HFlex gap={4}>
                         <Amount value={earnPosition?.rewards.coll} />
@@ -329,7 +329,7 @@ export function EarnPositionSummary({
                   )
                   : (
                     <TokenIcon.Group size="mini">
-                      <TokenIcon symbol={STABLE_COIN.symbol} />
+                      <TokenIcon symbol={STABLE_COIN_SYMBOL} />
                       <TokenIcon symbol={collToken.symbol} />
                     </TokenIcon.Group>
                   )}

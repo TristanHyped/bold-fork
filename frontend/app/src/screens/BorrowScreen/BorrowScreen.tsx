@@ -15,7 +15,6 @@ import {
   MAX_COLLATERAL_DEPOSITS,
   MIN_DEBT,
 } from "@/src/constants";
-import { STABLE_COIN } from "@/src/constants/assets";
 import content from "@/src/content";
 import { dnum18, dnumMax } from "@/src/dnum-utils";
 import { useInputFieldValue } from "@/src/form-utils";
@@ -28,6 +27,7 @@ import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { useNextOwnerIndex } from "@/src/subgraph-hooks";
 import { infoTooltipProps } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
+import { STABLE_COIN } from "@liquity2/uikit";
 import {
   Button,
   COLLATERALS as KNOWN_COLLATERALS,

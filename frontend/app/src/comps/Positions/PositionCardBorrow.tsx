@@ -3,7 +3,6 @@ import type { Dnum } from "dnum";
 import type { ReactNode } from "react";
 
 import { Amount } from "@/src/comps/Amount/Amount";
-import { STABLE_COIN } from "@/src/constants/assets";
 import { formatLiquidationRisk } from "@/src/formatting";
 import { fmtnum } from "@/src/formatting";
 import { getLiquidationRisk, getLtv, getRedemptionRisk } from "@/src/liquity-math";
@@ -11,6 +10,7 @@ import { getCollToken, shortenTroveId } from "@/src/liquity-utils";
 import { usePrice } from "@/src/services/Prices";
 import { riskLevelToStatusMode } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
+import { STABLE_COIN } from "@liquity2/uikit";
 import { HFlex, IconBorrow, StatusDot, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import Link from "next/link";

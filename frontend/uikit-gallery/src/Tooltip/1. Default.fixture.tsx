@@ -1,6 +1,6 @@
 "use client";
 
-import { IconInfo, TextButton, Tooltip } from "@liquity2/uikit";
+import { IconInfo, STABLE_COIN_SYMBOL, TextButton, Tooltip } from "@liquity2/uikit";
 
 export default function TooltipFixture() {
   return (
@@ -20,7 +20,7 @@ export default function TooltipFixture() {
           gap: 8,
         }}
       >
-        <h1>55M BOLD to redeem before you</h1>
+        <h1>55M {STABLE_COIN_SYMBOL} to redeem before you</h1>
         <p
           style={{
             fontSize: 14,
@@ -29,7 +29,7 @@ export default function TooltipFixture() {
         >
           {`
             A redemption is an event where the borrower's collateral is exchanged for
-            a corresponding amount of Bold stablecoins. At the time of the exchange
+            a corresponding amount of ${STABLE_COIN_SYMBOL} stablecoins. At the time of the exchange
             a borrower does not lose any money.
           `}
         </p>

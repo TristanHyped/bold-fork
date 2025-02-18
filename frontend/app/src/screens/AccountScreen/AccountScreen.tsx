@@ -6,13 +6,13 @@ import type { ReactNode } from "react";
 import { ERC20Faucet } from "@/src/abi/ERC20Faucet";
 import { Positions } from "@/src/comps/Positions/Positions";
 import { Screen } from "@/src/comps/Screen/Screen";
-import { GOVERNANCE_COIN, STABLE_COIN } from "@/src/constants/assets";
 import { getBranchContract, getProtocolContract } from "@/src/contracts";
 import { CHAIN_ID } from "@/src/env";
 import { fmtnum } from "@/src/formatting";
 import { getBranches } from "@/src/liquity-utils";
 import { useAccount, useBalance } from "@/src/services/Ethereum";
 import { css } from "@/styled-system/css";
+import { GOVERNANCE_COIN, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import {
   addressesEqual,
   Button,
@@ -107,10 +107,10 @@ export function AccountScreen({
               gridTemplateColumns: `repeat(3, 1fr)`,
             }}
           >
-            <GridItem label={`${STABLE_COIN.symbol} balance`}>
+            <GridItem label={`${STABLE_COIN_SYMBOL} balance`}>
               <Balance
                 address={address}
-                tokenSymbol={STABLE_COIN.symbol}
+                tokenSymbol={STABLE_COIN_SYMBOL}
               />
             </GridItem>
             <GridItem label={`${GOVERNANCE_COIN.symbol} balance`}>
@@ -122,10 +122,10 @@ export function AccountScreen({
                   && addressesEqual(address, account.address)}
               />
             </GridItem>
-            <GridItem label={`${STABLE_COIN.symbol} balance`}>
+            <GridItem label={`${STABLE_COIN_SYMBOL} balance`}>
               <Balance
                 address={address}
-                tokenSymbol={STABLE_COIN.symbol}
+                tokenSymbol={STABLE_COIN_SYMBOL}
               />
             </GridItem>
             {branches.map(({ symbol }) => (

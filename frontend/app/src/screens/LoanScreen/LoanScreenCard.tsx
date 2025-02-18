@@ -8,7 +8,6 @@ import { INFINITY } from "@/src/characters";
 import { ScreenCard } from "@/src/comps/Screen/ScreenCard";
 import { LoanStatusTag } from "@/src/comps/Tag/LoanStatusTag";
 import { Value } from "@/src/comps/Value/Value";
-import { STABLE_COIN } from "@/src/constants/assets";
 import { CHAIN_BLOCK_EXPLORER } from "@/src/env";
 import { formatRisk } from "@/src/formatting";
 import { fmtnum } from "@/src/formatting";
@@ -17,6 +16,7 @@ import { shortenTroveId, useTroveNftUrl } from "@/src/liquity-utils";
 import { riskLevelToStatusMode } from "@/src/uikit-utils";
 import { roundToDecimal } from "@/src/utils";
 import { css } from "@/styled-system/css";
+import { STABLE_COIN } from "@liquity2/uikit";
 import {
   Button,
   Dropdown,

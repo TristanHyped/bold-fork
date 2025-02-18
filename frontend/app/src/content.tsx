@@ -3,7 +3,7 @@
 
 import type { ReactNode as N } from "react";
 
-import { APP_NAME, STABLE_COIN } from "@/src/constants/assets";
+import { APP_NAME, DOCS_URL, GOVERNANCE_COIN_SYMBOL, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 
 export default {
   // Used in the top bar and other places
@@ -35,21 +35,21 @@ export default {
     loanRedemptionRisk: [
       "Redemption risk",
       <>
-        Users paying the lowest interest rate can get redeemed, if the price of {STABLE_COIN.symbol}{" "}
+        Users paying the lowest interest rate can get redeemed, if the price of {STABLE_COIN_SYMBOL}{" "}
         falls below $1. By raising your interest rate, you reduce this risk.
       </>,
     ],
     loanLtv: [
       "Loan-to-value ratio",
       <>
-        The ratio between the amount of {STABLE_COIN.symbol} borrowed and the deposited collateral (in USD).
+        The ratio between the amount of {STABLE_COIN_SYMBOL} borrowed and the deposited collateral (in USD).
       </>,
     ],
     loanMaxLtv: [
       "Maximum Loan-To-Value (LTV) Ratio",
       <>
         The maximum ratio between the USD value of a loan (in{" "}
-        {STABLE_COIN.symbol}) and the collateral backing it. The LTV will fluctuate as the price of the collateral
+        {STABLE_COIN_SYMBOL}) and the collateral backing it. The LTV will fluctuate as the price of the collateral
         changes. To decrease the LTV add more colateral or reduce debt.
       </>,
     ],
@@ -67,7 +67,7 @@ export default {
     interestRateBoldPerYear: [
       "Interest rate",
       <>
-        The annualized interest amount in {STABLE_COIN.symbol}{" "}
+        The annualized interest amount in {STABLE_COIN_SYMBOL}{" "}
         for the selected interest rate. The accumulated interest is added to the loan.
       </>,
     ],
@@ -82,12 +82,12 @@ export default {
       heading: "Your collateral and debt are reduced by the same value.",
       body: (
         <>
-          When {STABLE_COIN.symbol} trades for under $1, anyone can redeem positions to get {STABLE_COIN.symbol}{" "}
+          When {STABLE_COIN_SYMBOL} trades for under $1, anyone can redeem positions to get {STABLE_COIN_SYMBOL}{" "}
           back at $1. Positions with the lowest interest rate get redeemed first.
         </>
       ),
       footerLink: {
-        href: "https://docs.liquity.org/v2-faq/redemptions-and-delegation",
+        href: `${DOCS_URL}/redemptions-and-delegation`,
         label: "Learn more",
       },
     },
@@ -99,14 +99,14 @@ export default {
     subtitle: (
       <>
         Redemptions help maintain{" "}
-        {STABLE_COIN.symbol}’s peg in a decentralized way. If a user is redeemed, their collateral and debt are reduced
+        {STABLE_COIN_SYMBOL}’s peg in a decentralized way. If a user is redeemed, their collateral and debt are reduced
         equally, resulting in no net loss.
       </>
     ),
     infoItems: [
       {
         icon: "bold",
-        text: `Redemptions occur when ${STABLE_COIN.symbol} drops below $1.`,
+        text: `Redemptions occur when ${STABLE_COIN_SYMBOL} drops below $1.`,
       },
       {
         icon: "redemption",
@@ -119,7 +119,7 @@ export default {
     ],
     learnMore: {
       text: "Learn more about redemptions",
-      href: "https://docs.liquity.org/v2-faq/redemptions-and-delegation",
+      href: `${DOCS_URL}/redemptions-and-delegation`,
     },
   },
 
@@ -195,15 +195,15 @@ export default {
     actions: {
       borrow: {
         title: "Borrow",
-        description: `Mint ${STABLE_COIN.symbol} against your collateral at whatever interest rate you want`,
+        description: `Mint ${STABLE_COIN_SYMBOL} against your collateral at whatever interest rate you want`,
       },
       multiply: {
         title: "Multiply",
         description: "Increase your exposure to ETH and its staking yield with a single click",
       },
       earn: {
-        title: `Earn with ${STABLE_COIN.symbol}`,
-        description: `Deposit ${STABLE_COIN.symbol} to earn protocol revenues and liquidation proceeds`,
+        title: `Earn with ${STABLE_COIN_SYMBOL}`,
+        description: `Deposit ${STABLE_COIN_SYMBOL} to earn protocol revenues and liquidation proceeds`,
       },
       stake: {
         title: "Stake LQTY",
@@ -223,7 +223,7 @@ export default {
       ],
       spTvl: [
         "Total Value Locked",
-        `The total amount of ${STABLE_COIN.symbol} deposited in each stability pool.`,
+        `The total amount of ${STABLE_COIN_SYMBOL} deposited in each stability pool.`,
       ],
       borrowTvl: [
         "Total Value Locked",
@@ -236,7 +236,7 @@ export default {
   borrowScreen: {
     headline: (tokensIcons: N, boldIcon: N) => (
       <>
-        Borrow {boldIcon} {STABLE_COIN.symbol} with {tokensIcons} ETH
+        Borrow {boldIcon} {STABLE_COIN_SYMBOL} with {tokensIcons} ETH
       </>
     ),
     depositField: {
@@ -254,7 +254,7 @@ export default {
     action: "Next: Summary",
     infoTooltips: {
       interestRateSuggestions: [
-        `Positions with lower interest rates are the first to be redeemed by ${STABLE_COIN.symbol} holders.`,
+        `Positions with lower interest rates are the first to be redeemed by ${STABLE_COIN_SYMBOL} holders.`,
       ],
     },
   },
@@ -286,7 +286,7 @@ export default {
       ],
       interestRateSuggestions: [
         <>
-          Positions with lower interest rates are the first to be redeemed by {STABLE_COIN.symbol} holders.
+          Positions with lower interest rates are the first to be redeemed by {STABLE_COIN_SYMBOL} holders.
         </>,
       ],
       exposure: [
@@ -302,14 +302,14 @@ export default {
   earnHome: {
     headline: (tokensIcons: N, boldIcon: N) => (
       <>
-        Deposit {boldIcon} {STABLE_COIN.symbol} to earn rewards {tokensIcons}
+        Deposit {boldIcon} {STABLE_COIN_SYMBOL} to earn rewards {tokensIcons}
       </>
     ),
     subheading: (
       <>
-        A {STABLE_COIN.symbol}{" "}
+        A {STABLE_COIN_SYMBOL}{" "}
         deposit in a stability pool earns rewards from the fees that users pay on their loans. Also, in case the system
-        needs to liquidate positions, the {STABLE_COIN.symbol} may be swapped to collateral.
+        needs to liquidate positions, the {STABLE_COIN_SYMBOL} may be swapped to collateral.
       </>
     ),
     poolsColumns: {
@@ -319,7 +319,7 @@ export default {
     },
     infoTooltips: {
       tvl: (collateral: N) => [
-        <>Total {STABLE_COIN.symbol} covering {collateral}-backed position liquidations</>,
+        <>Total {STABLE_COIN_SYMBOL} covering {collateral}-backed position liquidations</>,
       ],
     },
   },
@@ -367,10 +367,10 @@ export default {
     },
     infoTooltips: {
       tvl: (collateral: N) => [
-        <>Total {STABLE_COIN.symbol} covering {collateral}-backed position liquidations.</>,
+        <>Total {STABLE_COIN_SYMBOL} covering {collateral}-backed position liquidations.</>,
       ],
       depositPoolShare: [
-        `Percentage of your ${STABLE_COIN.symbol} deposit compared to the total deposited in this stability pool.`,
+        `Percentage of your ${STABLE_COIN_SYMBOL} deposit compared to the total deposited in this stability pool.`,
       ],
       alsoClaimRewardsDeposit: [
         <>
@@ -384,31 +384,32 @@ export default {
         </>,
       ],
       currentApr: [
-        `Average annualized return for ${STABLE_COIN.symbol} deposits over the past 7 days.`,
+        `Average annualized return for ${STABLE_COIN_SYMBOL} deposits over the past 7 days.`,
       ],
       rewardsEth: [
         "ETH rewards",
         "Your proceeds from liquidations conducted by this stability pool.",
       ],
       rewardsBold: [
-        `${STABLE_COIN.symbol} rewards`,
+        `${STABLE_COIN_SYMBOL} rewards`,
         "Your earnings from protocol revenue distributions to this stability pool.",
       ],
     },
   },
-
+  // @todo replace with Pigeon token logo
   // Stake screen
   stakeScreen: {
     headline: (lqtyIcon: N) => (
       <>
         <span>Stake</span>
-        {lqtyIcon} <span>LQTY & get</span>
+        {lqtyIcon} <span>{GOVERNANCE_COIN_SYMBOL} & get</span>
         <span>voting power</span>
       </>
     ),
     subheading: (
       <>
-        By staking LQTY you can vote on incentives for Liquity V2, while still earning Liquity V1 fees.
+        By staking {GOVERNANCE_COIN_SYMBOL} you can vote on incentives for {APP_NAME}, while still earning{" "}
+        {STABLE_COIN_SYMBOL} fees.
       </>
     ),
     learnMore: ["https://docs.liquity.org/faq/staking", "Learn more"],
@@ -417,7 +418,7 @@ export default {
       votingPower: "Voting power",
       votingPowerHelp: (
         <>
-          Voting power is the percentage of the total staked LQTY that you own.
+          Voting power is the percentage of the total staked {GOVERNANCE_COIN_SYMBOL} that you own.
         </>
       ),
       unclaimed: "Unclaimed rewards",
@@ -446,9 +447,9 @@ export default {
       title: "Allocate your voting power",
       intro: (
         <>
-          Direct incentives from Liquity V2 protocol revenues towards liquidity providers for{" "}
-          {STABLE_COIN.symbol}. Upvote from Thursday to Tuesday. Downvote all week.{" "}
-          <Link href="https://docs.liquity.org/v2-faq/lqty-staking">Learn more</Link>
+          Direct incentives from {APP_NAME} protocol revenues towards liquidity providers for{" "}
+          {STABLE_COIN_SYMBOL}. Upvote from Thursday to Tuesday. Downvote all week.{" "}
+          <Link href={DOCS_URL}>Learn more</Link>
         </>
       ),
     },
