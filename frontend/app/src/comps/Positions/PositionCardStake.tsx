@@ -117,7 +117,7 @@ export function PositionCardStake({
                     })}
                   >
                     <Amount value={rewards.lusd} format="2diff" />
-                    <TokenIcon size="mini" symbol={STABLE_COIN.symbol} />
+                    <TokenIcon size="mini" symbol={STABLE_COIN_SYMBOL} />
                   </div>
                   <div
                     className={css({

@@ -8,8 +8,7 @@ import content from "@/src/content";
 import { getBranches, useEarnPosition } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN } from "@liquity2/uikit";
-import { TokenIcon } from "@liquity2/uikit";
+import { STABLE_COIN_SYMBOL, TokenIcon } from "@liquity2/uikit";
 import { a, useTransition } from "@react-spring/web";
 
 export function EarnPoolsListScreen() {
@@ -42,14 +41,14 @@ export function EarnPoolsListScreen() {
           >
             {content.earnHome.headline(
               <TokenIcon.Group>
-                {[STABLE_COIN.symbol, ...collSymbols].map((symbol) => (
+                {[STABLE_COIN_SYMBOL, ...collSymbols].map((symbol) => (
                   <TokenIcon
                     key={symbol}
                     symbol={symbol}
                   />
                 ))}
               </TokenIcon.Group>,
-              <TokenIcon symbol={STABLE_COIN.symbol} />,
+              <TokenIcon symbol={STABLE_COIN_SYMBOL} />,
             )}
           </div>
         ),

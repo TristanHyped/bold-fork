@@ -11,7 +11,7 @@ import { useAccount } from "@/src/services/Ethereum";
 import { usePrice } from "@/src/services/Prices";
 import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN } from "@liquity2/uikit";
+import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { Button, HFlex, TokenIcon, VFlex } from "@liquity2/uikit";
 import * as dn from "dnum";
 export function PanelClaimRewards({
@@ -29,7 +29,7 @@ export function PanelClaimRewards({
     throw new Error(`Invalid branch: ${branchId}`);
   }
 
-  const boldPriceUsd = usePrice("BOLD"); // todo: replace with STABLE_COIN.symbol
+  const boldPriceUsd = usePrice("BOLD"); // todo: replace with STABLE_COIN_SYMBOL
   const collPriceUsd = usePrice(collateral.symbol);
 
   const totalRewards = collPriceUsd.data && boldPriceUsd.data && dn.add(
@@ -47,7 +47,7 @@ export function PanelClaimRewards({
         <Rewards
           amount={position?.rewards?.bold ?? DNUM_0}
           label={content.earnScreen.rewardsPanel.boldRewardsLabel}
-          symbol={STABLE_COIN.symbol}
+          symbol={STABLE_COIN_SYMBOL}
         />
         <Rewards
           amount={position?.rewards?.coll ?? DNUM_0}

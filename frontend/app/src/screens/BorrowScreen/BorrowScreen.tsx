@@ -27,7 +27,7 @@ import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { useNextOwnerIndex } from "@/src/subgraph-hooks";
 import { infoTooltipProps } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN } from "@liquity2/uikit";
+import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import {
   Button,
   COLLATERALS as KNOWN_COLLATERALS,
@@ -173,7 +173,7 @@ export function BorrowScreen() {
                   />
                 ))}
               </TokenIcon.Group>,
-              <TokenIcon symbol={STABLE_COIN.symbol} />,
+              <TokenIcon symbol={STABLE_COIN_SYMBOL} />,
             )}
           </HFlex>
         ),
@@ -273,13 +273,13 @@ export function BorrowScreen() {
                 id="input-debt"
                 contextual={
                   <InputField.Badge
-                    icon={<TokenIcon symbol={STABLE_COIN.symbol} />}
-                    label={STABLE_COIN.symbol}
+                    icon={<TokenIcon symbol={STABLE_COIN_SYMBOL} />}
+                    label={STABLE_COIN_SYMBOL}
                   />
                 }
                 drawer={debt.isFocused || !isBelowMinDebt ? null : {
                   mode: "error",
-                  message: `You must borrow at least ${fmtnum(MIN_DEBT, 2)} ${STABLE_COIN.symbol}.`,
+                  message: `You must borrow at least ${fmtnum(MIN_DEBT, 2)} ${STABLE_COIN_SYMBOL}.`,
                 }}
                 label="Loan"
                 placeholder="0.00"

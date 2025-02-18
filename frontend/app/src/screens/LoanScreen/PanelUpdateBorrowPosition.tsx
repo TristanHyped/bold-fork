@@ -24,6 +24,7 @@ import {
   HFlex,
   InfoTooltip,
   InputField,
+  STABLE_COIN_SYMBOL,
   StatusDot,
   Tabs,
   TextButton,
@@ -33,7 +34,6 @@ import {
 } from "@liquity2/uikit";
 import { maxUint256 } from "viem";
 
-import { STABLE_COIN } from "@liquity2/uikit";
 import * as dn from "dnum";
 import { useState } from "react";
 
@@ -54,7 +54,7 @@ export function PanelUpdateBorrowPosition({
 
   // balances
   const collBalance = useBalance(account.address, collToken.symbol);
-  const boldBalance = useBalance(account.address, "BOLD");
+  const boldBalance = useBalance(account.address, STABLE_COIN_SYMBOL);
 
   // prices
   const collPrice = usePrice(collToken.symbol ?? null);
@@ -276,8 +276,8 @@ export function PanelUpdateBorrowPosition({
               contextual={
                 <InputTokenBadge
                   background={false}
-                  icon={<TokenIcon symbol={STABLE_COIN.symbol} />}
-                  label={STABLE_COIN.name}
+                  icon={<TokenIcon symbol={STABLE_COIN_SYMBOL} />}
+                  label={STABLE_COIN_SYMBOL}
                 />
               }
               drawer={!debtChange.isFocused && isBelowMinDebt

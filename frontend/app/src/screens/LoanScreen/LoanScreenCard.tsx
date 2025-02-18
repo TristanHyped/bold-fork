@@ -16,7 +16,7 @@ import { shortenTroveId, useTroveNftUrl } from "@/src/liquity-utils";
 import { riskLevelToStatusMode } from "@/src/uikit-utils";
 import { roundToDecimal } from "@/src/utils";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN } from "@liquity2/uikit";
+import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import {
   Button,
   Dropdown,
@@ -639,7 +639,7 @@ function LoanCard({
                           })}
                         >
                           {fmtnum(loan.borrowed)}
-                          <TokenIcon symbol={STABLE_COIN.symbol} size={24} />
+                          <TokenIcon symbol={STABLE_COIN_SYMBOL} size={24} />
                         </div>
                       )}
                   </div>

@@ -15,8 +15,7 @@ import { riskLevelToStatusMode } from "@/src/uikit-utils";
 import { roundToDecimal } from "@/src/utils";
 import { css } from "@/styled-system/css";
 import { token } from "@/styled-system/tokens";
-import { STABLE_COIN } from "@liquity2/uikit";
-import { Button, HFlex, IconBorrow, IconLeverage, StatusDot, TokenIcon } from "@liquity2/uikit";
+import { Button, HFlex, IconBorrow, IconLeverage, STABLE_COIN_SYMBOL, StatusDot, TokenIcon } from "@liquity2/uikit";
 import { a, useSpring } from "@react-spring/web";
 import * as dn from "dnum";
 import { match, P } from "ts-pattern";
@@ -441,7 +440,7 @@ function TotalDebt({
           >
             {fmtnum(loan.borrowed)}
           </div>
-          <TokenIcon symbol={STABLE_COIN.symbol} size={32} />
+          <TokenIcon symbol={STABLE_COIN_SYMBOL} size={32} />
           {prevLoan && !dn.eq(prevLoan.borrowed, loan.borrowed) && (
             <div
               title={`${fmtnum(prevLoan.borrowed, "full")} BOLD`}

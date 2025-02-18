@@ -15,7 +15,7 @@ import {
 } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN } from "@liquity2/uikit";
+import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { AnchorTextButton, IconBorrow, IconEarn, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import Link from "next/link";
@@ -44,7 +44,7 @@ export function HomeScreen() {
         })}
       >
         <HomeTable
-          title={`Borrow ${STABLE_COIN.symbol} against ETH and staked ETH`}
+          title={`Borrow ${STABLE_COIN_SYMBOL} against ETH and staked ETH`}
           subtitle="You can adjust your loans, including your interest rate, at any time"
           icon={<IconBorrow />}
           columns={[
@@ -66,8 +66,8 @@ export function HomeScreen() {
           ))}
         />
         <HomeTable
-          title={`Earn rewards with ${STABLE_COIN.symbol}`}
-          subtitle={`Earn ${STABLE_COIN.symbol} & (staked) ETH rewards by putting your ${STABLE_COIN.symbol} in a stability pool`}
+          title={`Earn rewards with ${STABLE_COIN_SYMBOL}`}
+          subtitle={`Earn ${STABLE_COIN_SYMBOL} & (staked) ETH rewards by putting your ${STABLE_COIN_SYMBOL} in a stability pool`}
           icon={<IconEarn />}
           columns={[
             "Pool",
@@ -162,7 +162,7 @@ function BorrowingRow({
                   })}
                 >
                   Borrow
-                  <TokenIcon symbol={STABLE_COIN.symbol} size="mini" />
+                  <TokenIcon symbol={STABLE_COIN_SYMBOL} size="mini" />
                 </div>
               }
               title={`Borrow ${collateral?.name} from ${symbol}`}
@@ -261,7 +261,7 @@ function EarnRewardsRow({
               >
                 Earn
                 <TokenIcon.Group size="mini">
-                  <TokenIcon symbol={STABLE_COIN.symbol} />
+                  <TokenIcon symbol={STABLE_COIN_SYMBOL} />
                   <TokenIcon symbol={symbol} />
                 </TokenIcon.Group>
               </div>

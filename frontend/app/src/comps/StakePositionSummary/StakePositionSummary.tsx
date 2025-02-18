@@ -8,7 +8,7 @@ import { fmtnum } from "@/src/formatting";
 import { useAccount } from "@/src/services/Ethereum";
 import { useGovernanceStats, useGovernanceUser } from "@/src/subgraph-hooks";
 import { css } from "@/styled-system/css";
-import { GOVERNANCE_COIN, STABLE_COIN } from "@liquity2/uikit";
+import { GOVERNANCE_COIN, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { HFlex, IconStake, InfoTooltip, TokenIcon, useRaf } from "@liquity2/uikit";
 import { a } from "@react-spring/web";
 import * as dn from "dnum";
@@ -286,7 +286,7 @@ export function StakePositionSummary({
                   format="2diff"
                   value={stakePosition?.rewards.lusd ?? 0}
                 />
-                <TokenIcon symbol={STABLE_COIN.symbol} size="mini" />
+                <TokenIcon symbol={STABLE_COIN_SYMBOL} size="mini" />
               </HFlex>
               <HFlex
                 gap={4}

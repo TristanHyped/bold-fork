@@ -14,7 +14,7 @@ import { useAccount, useBalance } from "@/src/services/Ethereum";
 import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { infoTooltipProps } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN } from "@liquity2/uikit";
+import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { Button, Checkbox, HFlex, InfoTooltip, InputField, Tabs, TextButton, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import { useState } from "react";
@@ -52,7 +52,7 @@ export function PanelUpdateDeposit({
     DNUM_0,
   );
 
-  const boldBalance = useBalance(account.address, STABLE_COIN.symbol);
+  const boldBalance = useBalance(account.address, STABLE_COIN_SYMBOL);
 
   const updatedBoldQty = dn.add(deposited, depositDifference);
 
@@ -93,21 +93,21 @@ export function PanelUpdateDeposit({
             drawer={insufficientBalance
               ? {
                 mode: "error",
-                message: `Insufficient balance. You have ${fmtnum(boldBalance.data ?? 0)} ${STABLE_COIN.symbol}.`,
+                message: `Insufficient balance. You have ${fmtnum(boldBalance.data ?? 0)} ${STABLE_COIN_SYMBOL}.`,
               }
               : withdrawAboveDeposit
               ? {
                 mode: "error",
                 message: hasDeposit
                   ? `You can’t withdraw more than you have deposited.`
-                  : `No ${STABLE_COIN.symbol} deposited.`,
+                  : `No ${STABLE_COIN_SYMBOL} deposited.`,
               }
               : null}
             contextual={
               <InputTokenBadge
                 background={false}
-                icon={<TokenIcon symbol={STABLE_COIN.symbol} />}
-                label={STABLE_COIN.symbol}
+                icon={<TokenIcon symbol={STABLE_COIN_SYMBOL} />}
+                label={STABLE_COIN_SYMBOL}
               />
             }
             id="input-deposit-change"
@@ -231,7 +231,7 @@ export function PanelUpdateDeposit({
                       color: "contentAlt",
                     })}
                   >
-                    {STABLE_COIN.symbol}
+                    {STABLE_COIN_SYMBOL}
                   </span>
                 </div>
                 {collateral && (
