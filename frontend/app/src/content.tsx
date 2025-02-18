@@ -7,7 +7,7 @@ import { APP_NAME, STABLE_COIN } from "@/src/constants/assets";
 
 export default {
   // Used in the top bar and other places
-  appName: APP_NAME,
+  appName: APP_NAME, // edited
 
   // Menu bar
   menu: {

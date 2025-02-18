@@ -5,6 +5,7 @@ import tokenEth from "./token-icons/eth.svg";
 // import tokenLqty from "./token-icons/lqty.svg";
 import tokenLusd from "./token-icons/lusd.svg";
 // import tokenMaticx from "./token-icons/maticx.svg";
+import tokenMaticx from "./token-icons/pol/maticx.webp";
 import tokenPol from "./token-icons/pol/pol.svg";
 import tokenWbtc from "./token-icons/pol/wbtc.svg";
 // import tokenReth from "./token-icons/reth.svg";
@@ -94,7 +95,7 @@ export const WBTC: CollateralToken = {
 
 export const MATICX: CollateralToken = {
   collateralRatio: 1.1,
-  icon: tokenPol,
+  icon: tokenMaticx,
   name: "MATICX",
   symbol: "MATICX" as const,
 } as const;
