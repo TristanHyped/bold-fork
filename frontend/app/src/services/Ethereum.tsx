@@ -20,14 +20,14 @@ import {
   CHAIN_NAME,
   CHAIN_RPC_URL,
   CONTRACT_BOLD_TOKEN,
-  CONTRACT_LQTY_TOKEN,
+  // CONTRACT_LQTY_TOKEN,
   CONTRACT_LUSD_TOKEN,
   WALLET_CONNECT_PROJECT_ID,
 } from "@/src/env";
 import { getBranch } from "@/src/liquity-utils";
 import { getSafeStatus } from "@/src/safe-utils";
 import { noop } from "@/src/utils";
-import { isCollateralSymbol, useTheme } from "@liquity2/uikit";
+import { GOVERNANCE_COIN_SYMBOL, isCollateralSymbol, STABLE_COIN_SYMBOL, useTheme } from "@liquity2/uikit";
 import {
   getDefaultConfig,
   lightTheme,
@@ -108,7 +108,7 @@ export function useAccount():
     safeStatus: safeStatus.data ?? null,
   };
 }
-
+// @todo: add support for our tokens
 export function useBalance(
   address: Address | undefined,
   token: Token["symbol"] | undefined,
@@ -125,9 +125,9 @@ export function useBalance(
         return getBranch(symbol).contracts.CollToken.address;
       },
     )
-    .with("LUSD", () => CONTRACT_LUSD_TOKEN)
-    .with("BOLD", () => CONTRACT_BOLD_TOKEN)
-    .with("LQTY", () => CONTRACT_LQTY_TOKEN)
+    .with(STABLE_COIN_SYMBOL, () => CONTRACT_LUSD_TOKEN)
+    .with(GOVERNANCE_COIN_SYMBOL, () => CONTRACT_BOLD_TOKEN)
+    // .with(GOVERNANCE_COIN_SYMBOL, () => CONTRACT_LQTY_TOKEN)
     .otherwise(() => null);
 
   const tokenBalance = useReadContract({
@@ -150,7 +150,7 @@ export function useBalance(
   });
 
   return demoMode.enabled && token
-    ? { data: ACCOUNT_BALANCES[token], isLoading: false }
+    ? { data: ACCOUNT_BALANCES[token as keyof typeof ACCOUNT_BALANCES], isLoading: false }
     : (token === "ETH" ? ethBalance : tokenBalance);
 }
 

@@ -21,6 +21,7 @@ import { riskLevelToStatusMode } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
 import {
   Button,
+  GOVERNANCE_COIN_SYMBOL,
   HFlex,
   InfoTooltip,
   InputField,
@@ -58,7 +59,7 @@ export function PanelUpdateBorrowPosition({
 
   // prices
   const collPrice = usePrice(collToken.symbol ?? null);
-  const boldPriceUsd = usePrice("BOLD") ?? dnum18(0);
+  const boldPriceUsd = usePrice(GOVERNANCE_COIN_SYMBOL) ?? dnum18(0);
 
   // deposit change
   const [depositMode, setDepositMode] = useState<ValueUpdateMode>("add");

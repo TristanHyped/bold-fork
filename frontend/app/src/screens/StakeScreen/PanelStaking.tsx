@@ -11,7 +11,7 @@ import { usePrice } from "@/src/services/Prices";
 import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { infoTooltipProps } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
-import { GOVERNANCE_COIN } from "@liquity2/uikit";
+import { GOVERNANCE_COIN_SYMBOL } from "@liquity2/uikit";
 import { Button, HFlex, InfoTooltip, InputField, Tabs, TextButton, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import { useState } from "react";
@@ -19,7 +19,7 @@ import { useState } from "react";
 export function PanelStaking() {
   const account = useAccount();
   const txFlow = useTransactionFlow();
-  const lqtyPrice = usePrice("LQTY");
+  const lqtyPrice = usePrice(GOVERNANCE_COIN_SYMBOL);
 
   const [mode, setMode] = useState<"deposit" | "withdraw">("deposit");
   const [value, setValue] = useState("");
@@ -50,7 +50,7 @@ export function PanelStaking() {
     )
     : dn.from(0, 18);
 
-  const lqtyBalance = useBalance(account.address, GOVERNANCE_COIN.symbol);
+  const lqtyBalance = useBalance(account.address, GOVERNANCE_COIN_SYMBOL);
   const isDepositFilled = parsedValue && dn.gt(parsedValue, 0);
   const hasDeposit = stakePosition.data?.deposit && dn.gt(
     stakePosition.data?.deposit,
@@ -94,8 +94,8 @@ export function PanelStaking() {
             contextual={
               <InputTokenBadge
                 background={false}
-                icon={<TokenIcon symbol={GOVERNANCE_COIN.symbol} />}
-                label="LQTY"
+                icon={<TokenIcon symbol={GOVERNANCE_COIN_SYMBOL} />}
+                label={GOVERNANCE_COIN_SYMBOL}
               />
             }
             label={{

@@ -1,8 +1,9 @@
 export function generateStaticParams() {
   return [
+    { collateral: "pol" },
     { collateral: "eth" },
-    { collateral: "reth" },
-    { collateral: "wsteth" },
+    { collateral: "wbtc" },
+    { collateral: "maticx" },
   ];
 }
 

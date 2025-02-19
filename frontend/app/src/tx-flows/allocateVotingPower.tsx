@@ -11,7 +11,7 @@ import { useGovernanceUser } from "@/src/subgraph-hooks";
 import { GovernanceUserAllocated, graphQuery } from "@/src/subgraph-queries";
 import { vVoteAllocations } from "@/src/valibot-utils";
 import { css } from "@/styled-system/css";
-import { IconDownvote, IconStake, IconUpvote } from "@liquity2/uikit";
+import { GOVERNANCE_COIN_SYMBOL, IconDownvote, IconStake, IconUpvote } from "@liquity2/uikit";
 import * as dn from "dnum";
 import * as v from "valibot";
 import { createRequestSchema, verifyTransaction } from "./shared";
@@ -67,7 +67,7 @@ export const allocateVotingPower: FlowDeclaration<AllocateVotingPowerRequest> = 
           })}
         >
           <h1
-            title="LQTY Stake"
+            title={`${GOVERNANCE_COIN_SYMBOL} Stake`}
             className={css({
               display: "flex",
               alignItems: "center",
@@ -93,7 +93,7 @@ export const allocateVotingPower: FlowDeclaration<AllocateVotingPowerRequest> = 
               >
                 <IconStake size={16} />
               </div>
-              LQTY Stake
+              {GOVERNANCE_COIN_SYMBOL} Stake
             </div>
           </h1>
           <div

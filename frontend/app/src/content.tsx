@@ -206,8 +206,8 @@ export default {
         description: `Deposit ${STABLE_COIN_SYMBOL} to earn protocol revenues and liquidation proceeds`,
       },
       stake: {
-        title: "Stake LQTY",
-        description: "Direct protocol incentives with LQTY while earning from Liquity V1",
+        title: `Stake ${GOVERNANCE_COIN_SYMBOL}`,
+        description: `Direct protocol incentives with ${GOVERNANCE_COIN_SYMBOL} while earning from Liquity V1`,
       },
     },
     statsBar: {

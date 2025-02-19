@@ -15,7 +15,7 @@ import {
 } from "@/src/liquity-utils";
 import { useAccount } from "@/src/services/Ethereum";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
+import { COLLATERALS_STRING, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { AnchorTextButton, IconBorrow, IconEarn, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import Link from "next/link";
@@ -44,7 +44,7 @@ export function HomeScreen() {
         })}
       >
         <HomeTable
-          title={`Borrow ${STABLE_COIN_SYMBOL} against ETH and staked ETH`}
+          title={`Borrow ${STABLE_COIN_SYMBOL} against ${COLLATERALS_STRING}`}
           subtitle="You can adjust your loans, including your interest rate, at any time"
           icon={<IconBorrow />}
           columns={[
@@ -67,7 +67,7 @@ export function HomeScreen() {
         />
         <HomeTable
           title={`Earn rewards with ${STABLE_COIN_SYMBOL}`}
-          subtitle={`Earn ${STABLE_COIN_SYMBOL} & (staked) ETH rewards by putting your ${STABLE_COIN_SYMBOL} in a stability pool`}
+          subtitle={`Earn ${STABLE_COIN_SYMBOL} rewards by putting your ${STABLE_COIN_SYMBOL} in a stability pool`}
           icon={<IconEarn />}
           columns={[
             "Pool",

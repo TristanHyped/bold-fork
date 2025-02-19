@@ -10,7 +10,15 @@ import { useAccount, useBalance } from "@/src/services/Ethereum";
 import { usePrice } from "@/src/services/Prices";
 import { useTransactionFlow } from "@/src/services/TransactionFlow";
 import { css } from "@/styled-system/css";
-import { addressesEqual, Button, Dropdown, TokenIcon, TOKENS_BY_SYMBOL, VFlex } from "@liquity2/uikit";
+import {
+  addressesEqual,
+  Button,
+  Dropdown,
+  GOVERNANCE_COIN_SYMBOL,
+  TokenIcon,
+  TOKENS_BY_SYMBOL,
+  VFlex,
+} from "@liquity2/uikit";
 import * as dn from "dnum";
 import { useState } from "react";
 
@@ -26,25 +34,25 @@ export function PanelClosePosition({
   const collateral = getCollToken(branch.id);
 
   const collPriceUsd = usePrice(collateral.symbol);
-  const boldPriceUsd = usePrice("BOLD");
-  const boldBalance = useBalance(account.address, "BOLD");
+  const boldPriceUsd = usePrice(GOVERNANCE_COIN_SYMBOL);
+  const boldBalance = useBalance(account.address, GOVERNANCE_COIN_SYMBOL);
 
   const [repayDropdownIndex, setRepayDropdownIndex] = useState(0);
-  const repayToken = TOKENS_BY_SYMBOL[repayDropdownIndex === 0 ? "BOLD" : collateral.symbol];
+  const repayToken = TOKENS_BY_SYMBOL[repayDropdownIndex === 0 ? GOVERNANCE_COIN_SYMBOL : collateral.symbol];
 
   // either in BOLD or in collateral
-  const amountToRepay = repayToken.symbol === "BOLD"
+  const amountToRepay = repayToken.symbol === GOVERNANCE_COIN_SYMBOL
     ? loan.borrowed
     : collPriceUsd.data && dn.div(loan.borrowed, collPriceUsd.data);
 
   const amountToRepayUsd = amountToRepay && (
-    repayToken.symbol === "BOLD"
+    repayToken.symbol === GOVERNANCE_COIN_SYMBOL
       ? boldPriceUsd.data && dn.mul(amountToRepay, boldPriceUsd.data)
       : collPriceUsd.data && dn.mul(amountToRepay, collPriceUsd.data)
   );
 
   // when repaying with collateral, subtract the amount used to repay
-  const collToReclaim = repayToken.symbol === "BOLD"
+  const collToReclaim = repayToken.symbol === GOVERNANCE_COIN_SYMBOL
     ? loan.deposit
     : amountToRepay && dn.sub(loan.deposit, amountToRepay);
 
@@ -64,7 +72,7 @@ export function PanelClosePosition({
     }
     if (
       isOwner
-      && repayToken.symbol === "BOLD"
+      && repayToken.symbol === GOVERNANCE_COIN_SYMBOL
       && amountToRepay
       && (!boldBalance.data || dn.lt(boldBalance.data, amountToRepay))
     ) {
@@ -124,12 +132,12 @@ export function PanelClosePosition({
                             fontWeight: 400,
                           })}
                         >
-                          {repayToken.symbol === "BOLD" ? " account" : " loan"}
+                          {repayToken.symbol === GOVERNANCE_COIN_SYMBOL ? " account" : " loan"}
                         </span>
                       </>
                     ),
                   })}
-                  items={(["BOLD", collateral.symbol] as const).map((symbol) => ({
+                  items={([GOVERNANCE_COIN_SYMBOL, collateral.symbol] as const).map((symbol) => ({
                     icon: <TokenIcon symbol={symbol} />,
                     label: (
                       <div
@@ -137,12 +145,13 @@ export function PanelClosePosition({
                           whiteSpace: "nowrap",
                         })}
                       >
-                        {TOKENS_BY_SYMBOL[symbol].name} {symbol === "BOLD" ? "(account)" : "(collateral)"}
+                        {TOKENS_BY_SYMBOL[symbol].name}{" "}
+                        {symbol === GOVERNANCE_COIN_SYMBOL ? "(account)" : "(collateral)"}
                       </div>
                     ),
-                    disabled: symbol !== "BOLD",
-                    disabledReason: symbol !== "BOLD" ? "Coming soon" : undefined,
-                    value: symbol === "BOLD" ? fmtnum(boldBalance.data) : null,
+                    disabled: symbol !== GOVERNANCE_COIN_SYMBOL,
+                    disabledReason: symbol !== GOVERNANCE_COIN_SYMBOL ? "Coming soon" : undefined,
+                    value: symbol === GOVERNANCE_COIN_SYMBOL ? fmtnum(boldBalance.data) : null,
                   }))}
                   menuWidth={300}
                   menuPlacement="end"
@@ -228,7 +237,7 @@ export function PanelClosePosition({
       >
         {claimOnly
           ? content.closeLoan.claimOnly
-          : repayToken.symbol === "BOLD"
+          : repayToken.symbol === GOVERNANCE_COIN_SYMBOL
           ? content.closeLoan.repayWithBoldMessage
           : content.closeLoan.repayWithCollateralMessage}
       </div>
@@ -271,7 +280,7 @@ export function PanelClosePosition({
                 successMessage: "The loan position has been closed successfully.",
 
                 loan: { ...loan },
-                repayWithCollateral: claimOnly ? false : repayToken.symbol !== "BOLD",
+                repayWithCollateral: claimOnly ? false : repayToken.symbol !== GOVERNANCE_COIN_SYMBOL,
               });
             }
           }}

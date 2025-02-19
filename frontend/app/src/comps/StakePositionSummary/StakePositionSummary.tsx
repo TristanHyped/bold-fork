@@ -8,7 +8,7 @@ import { fmtnum } from "@/src/formatting";
 import { useAccount } from "@/src/services/Ethereum";
 import { useGovernanceStats, useGovernanceUser } from "@/src/subgraph-hooks";
 import { css } from "@/styled-system/css";
-import { GOVERNANCE_COIN, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
+import { DOCS_URL, GOVERNANCE_COIN_SYMBOL, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { HFlex, IconStake, InfoTooltip, TokenIcon, useRaf } from "@liquity2/uikit";
 import { a } from "@react-spring/web";
 import * as dn from "dnum";
@@ -122,7 +122,7 @@ export function StakePositionSummary({
         })}
       >
         <h1
-          title="LQTY Stake"
+          title={`${GOVERNANCE_COIN_SYMBOL} Stake`}
           className={css({
             display: "flex",
             alignItems: "center",
@@ -148,7 +148,7 @@ export function StakePositionSummary({
             >
               <IconStake size={16} />
             </div>
-            LQTY Stake
+            {GOVERNANCE_COIN_SYMBOL} Stake
           </div>
         </h1>
         <div
@@ -208,7 +208,7 @@ export function StakePositionSummary({
                         value={stakePosition?.deposit ?? 0}
                       />
                     </div>
-                    <TokenIcon symbol={GOVERNANCE_COIN.symbol} size={32} />
+                    <TokenIcon symbol={GOVERNANCE_COIN_SYMBOL} size={32} />
                   </a.div>
                 )
               ))}
@@ -217,7 +217,7 @@ export function StakePositionSummary({
                 && !dn.eq(prevStakePosition.deposit, stakePosition.deposit)
                 && (
                   <div
-                    title={`${fmtnum(prevStakePosition.deposit, "full")} LQTY`}
+                    title={`${fmtnum(prevStakePosition.deposit, "full")} ${GOVERNANCE_COIN_SYMBOL}`}
                     className={css({
                       color: "contentAlt",
                       textDecoration: "line-through",
@@ -370,7 +370,7 @@ export function StakePositionSummary({
                             >
                               <p>
                                 Your relative voting power changes over time, depending on your and others deposits of
-                                LQTY.
+                                {GOVERNANCE_COIN_SYMBOL}.
                               </p>
                               {account.address && (govUser.data?.stakedLQTY ?? 0n) > 0n && (
                                 <div
@@ -389,7 +389,7 @@ export function StakePositionSummary({
                             </div>
                           ),
                           footerLink: {
-                            href: "https://docs.liquity.org/v2-faq/lqty-staking",
+                            href: `${DOCS_URL}/v2-faq/lqty-staking`,
                             label: "Learn more",
                           },
                         }}
@@ -416,7 +416,7 @@ export function StakePositionSummary({
                 Allocated
               </div>
               <div
-                title={`${fmtnum([govUser.data?.allocatedLQTY ?? 0n, 18], "full")} LQTY`}
+                title={`${fmtnum([govUser.data?.allocatedLQTY ?? 0n, 18], "full")} ${GOVERNANCE_COIN_SYMBOL}`}
                 className={css({
                   display: "flex",
                   alignItems: "center",
@@ -430,7 +430,7 @@ export function StakePositionSummary({
                 />
                 <TokenIcon
                   title={null}
-                  symbol={GOVERNANCE_COIN.symbol}
+                  symbol={GOVERNANCE_COIN_SYMBOL}
                   size="mini"
                 />
               </div>

@@ -11,12 +11,12 @@ import { useAccount } from "@/src/services/Ethereum";
 import { usePrice } from "@/src/services/Prices";
 import { GovernanceUserAllocated, graphQuery } from "@/src/subgraph-queries";
 import { vDnum, vPositionStake } from "@/src/valibot-utils";
+import { GOVERNANCE_COIN_SYMBOL } from "@liquity2/uikit";
 import * as dn from "dnum";
 import * as v from "valibot";
 import { maxUint256 } from "viem";
 import { getBytecode } from "wagmi/actions";
 import { createRequestSchema, verifyTransaction } from "./shared";
-
 const RequestSchema = createRequestSchema(
   "stakeDeposit",
   {
@@ -42,14 +42,14 @@ export const stakeDeposit: FlowDeclaration<StakeDepositRequest> = {
   },
 
   Details({ request }) {
-    const lqtyPrice = usePrice("LQTY");
+    const lqtyPrice = usePrice(GOVERNANCE_COIN_SYMBOL); // @todo do we keep LQTY ?
     return (
       <TransactionDetailsRow
         label="You deposit"
         value={[
           <Amount
             key="start"
-            suffix=" LQTY"
+            suffix={GOVERNANCE_COIN_SYMBOL}
             value={request.lqtyAmount}
           />,
           <Amount
@@ -103,7 +103,7 @@ export const stakeDeposit: FlowDeclaration<StakeDepositRequest> = {
     },
 
     approve: {
-      name: () => "Approve LQTY",
+      name: () => `Approve ${GOVERNANCE_COIN_SYMBOL}`,
       Status: (props) => {
         const account = useAccount();
         return (

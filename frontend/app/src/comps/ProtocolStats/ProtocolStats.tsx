@@ -14,7 +14,7 @@ import { blo } from "blo";
 import Image from "next/image";
 import Link from "next/link";
 
-const DISPLAYED_PRICES = ["LQTY", "BOLD", "ETH"] as const;
+const DISPLAYED_PRICES = ["ETH", "POL", "WBTC", "MATICX"] as const;
 
 export function ProtocolStats() {
   const account = useAccount();

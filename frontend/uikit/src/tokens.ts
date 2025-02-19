@@ -82,6 +82,9 @@ export const POLYGON_COLLATERALS: CollateralToken[] = [
   MATICX,
 ];
 
+// used for generate static params and "Borrow against" in homepage
+export const COLLATERALS_STRING = POLYGON_COLLATERALS.map((token) => token.symbol).join(", ");
+export const COLLATERAL_PATHS = ["pol", "eth", "wbtc", "maticx"] as const;
 export const COLLATERALS: CollateralToken[] = [
   ...POLYGON_COLLATERALS,
 ];

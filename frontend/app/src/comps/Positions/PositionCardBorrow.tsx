@@ -10,7 +10,7 @@ import { getCollToken, shortenTroveId } from "@/src/liquity-utils";
 import { usePrice } from "@/src/services/Prices";
 import { riskLevelToStatusMode } from "@/src/uikit-utils";
 import { css } from "@/styled-system/css";
-import { STABLE_COIN_SYMBOL } from "@liquity2/uikit";
+import { CustomTokenSymbols, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { HFlex, IconBorrow, StatusDot, TokenIcon } from "@liquity2/uikit";
 import * as dn from "dnum";
 import Link from "next/link";
@@ -40,7 +40,7 @@ export function PositionCardBorrow({
   })
 {
   const token = getCollToken(branchId);
-  const collateralPriceUsd = usePrice(token?.symbol ?? null);
+  const collateralPriceUsd = usePrice(token?.symbol as CustomTokenSymbols | null);
 
   const ltv = debt && collateralPriceUsd.data
     && getLtv(deposit, debt, collateralPriceUsd.data);

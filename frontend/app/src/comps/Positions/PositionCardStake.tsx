@@ -2,7 +2,7 @@ import type { PositionStake } from "@/src/types";
 
 import { Amount } from "@/src/comps/Amount/Amount";
 import { css } from "@/styled-system/css";
-import { GOVERNANCE_COIN, STABLE_COIN } from "@liquity2/uikit";
+import { GOVERNANCE_COIN_SYMBOL, STABLE_COIN_SYMBOL } from "@liquity2/uikit";
 import { HFlex, IconStake, TokenIcon } from "@liquity2/uikit";
 import Link from "next/link";
 import { PositionCard } from "./PositionCard";
@@ -35,7 +35,7 @@ export function PositionCardStake({
               color: "positionContent",
             })}
           >
-            LQTY stake
+            {GOVERNANCE_COIN_SYMBOL} stake
           </div>,
         ]}
         contextual={
@@ -51,12 +51,12 @@ export function PositionCardStake({
           value: (
             <HFlex gap={8} alignItems="center" justifyContent="flex-start">
               <Amount value={deposit} format={2} />
-              <TokenIcon size="medium" symbol={GOVERNANCE_COIN.symbol} />
+              <TokenIcon size="medium" symbol={GOVERNANCE_COIN_SYMBOL} />
             </HFlex>
           ),
           label: (
             <HFlex gap={4} justifyContent="flex-start">
-              Staked {GOVERNANCE_COIN.symbol}
+              Staked {GOVERNANCE_COIN_SYMBOL}
             </HFlex>
           ),
         }}
