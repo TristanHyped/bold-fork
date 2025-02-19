@@ -36,6 +36,8 @@ function useCollateralPrice(symbol: null | CollateralSymbol): UseQueryResult<Dnu
   });
 }
 
+// @todo: add support for our prices with univ3 and curve pools
+
 // type CoinGeckoSymbol = TokenSymbol & ("LQTY" | "LUSD");
 // const coinGeckoTokenIds: {
 //   [key in CoinGeckoSymbol]: string;
