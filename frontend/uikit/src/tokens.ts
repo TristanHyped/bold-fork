@@ -55,8 +55,6 @@ export const MATICX: CollateralToken = {
   symbol: "MATICX" as const,
 } as const;
 
-export const COLLATERALS_LABEL = "";
-
 // export const SG: Token = {
 //   icon: tokenPol,
 //   name: "SG",

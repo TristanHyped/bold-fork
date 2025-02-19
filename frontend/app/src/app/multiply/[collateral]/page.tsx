@@ -1,3 +1,4 @@
+// edited
 export function generateStaticParams() {
   return [
     { collateral: "pol" },

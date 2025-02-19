@@ -1,13 +1,12 @@
 import type { TypedDocumentString } from "@/src/graphql/graphql";
 
-import { SUBGRAPH_URL } from "@/src/env";
 import { graphql } from "@/src/graphql";
 
 export async function graphQuery<TResult, TVariables>(
   query: TypedDocumentString<TResult, TVariables>,
   ...[variables]: TVariables extends Record<string, never> ? [] : [TVariables]
 ) {
-  const response = await fetch(SUBGRAPH_URL, {
+  const response = await fetch("/subgraph", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
