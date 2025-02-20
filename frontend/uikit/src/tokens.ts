@@ -7,6 +7,7 @@ import tokenPol from "./token-icons/pol/pol.svg";
 import tokenWbtc from "./token-icons/pol/wbtc.svg";
 
 type PolCollateralSymbol = "POL" | "ETH" | "WBTC" | "MATICX";
+export const NATIVE_TOKEN = "POL" as const;
 
 export type CollateralSymbol = PolCollateralSymbol;
 
@@ -80,9 +81,12 @@ export const POLYGON_COLLATERALS: CollateralToken[] = [
   MATICX,
 ];
 
-// used for generate static params and "Borrow against" in homepage
+// used for "Borrow against" in homepage
 export const COLLATERALS_STRING = POLYGON_COLLATERALS.map((token) => token.symbol).join(", ");
-export const COLLATERAL_PATHS = ["pol", "eth", "wbtc", "maticx"] as const;
+
+// used for generate static params
+// export const COLLATERAL_PATHS = ["pol", "weth", "wbtc", "maticx"] as const;
+
 export const COLLATERALS: CollateralToken[] = [
   ...POLYGON_COLLATERALS,
 ];

@@ -160,7 +160,7 @@ export function useEarnPosition(
   const yieldGainsInBold = useQuery({
     queryFn: () => getBoldGains.data?.(Date.now()) ?? null,
     queryKey: ["useEarnPosition:getBoldGains", branchId, account],
-    refetchInterval: 10_000,
+    // refetchInterval: 10_000,
     enabled: getBoldGains.status === "success",
   });
 

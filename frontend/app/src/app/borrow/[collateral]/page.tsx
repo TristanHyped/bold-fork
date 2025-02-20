@@ -1,10 +1,17 @@
 export function generateStaticParams() {
-  return [
-    { collateral: "pol" },
-    { collateral: "eth" },
-    { collateral: "wbtc" },
-    { collateral: "maticx" },
-  ];
+  return process.env.NEXT_PUBLIC_CHAIN === "pol"
+    ? [
+      { collateral: "pol" },
+      { collateral: "eth" },
+      { collateral: "wbtc" },
+      { collateral: "maticx" },
+    ]
+    : [
+      { collateral: "pol" },
+      { collateral: "eth" },
+      { collateral: "wbtc" },
+      { collateral: "" },
+    ];
 }
 
 export default function BorrowCollateralPage() {

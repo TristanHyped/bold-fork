@@ -1,5 +1,6 @@
 import type { TypedDocumentString } from "@/src/graphql/graphql";
-
+// @todo replace /subgraph with SUBGRAPH_URL in prod
+// import { SUBGRAPH_URL } from "@/src/env";
 import { graphql } from "@/src/graphql";
 
 export async function graphQuery<TResult, TVariables>(

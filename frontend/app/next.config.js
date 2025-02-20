@@ -53,8 +53,8 @@ export default withBundleAnalyzer({
   async rewrites() {
     return [
       {
-        source: "/subgraph/:path*",
-        destination: "https://api.studio.thegraph.com/query/104668/pigeon-amoy/v0.0.5/:path*",
+        source: "/subgraph",
+        destination: "https://api.studio.thegraph.com/query/104668/pigeon-amoy/v0.0.5/graphql",
       },
     ];
   },
